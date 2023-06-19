@@ -5,9 +5,9 @@ import React, { useState } from "react";
 function Navbar() {
   const [navMenu, setNavMenu] = useState([
     { id: 1, name: "Home", path: "/" },
-    { id: 1, name: "Kategorien", path: "/kategorien" },
-    { id: 1, name: "Über Uns", path: "/uberuns" },
-    { id: 1, name: "Kontakt", path: "/kontakt" },
+    { id: 2, name: "Kategorien", path: "/kategorien" },
+    { id: 3, name: "Über Uns", path: "/uberuns" },
+    { id: 4, name: "Kontakt", path: "/kontakt" },
   ]);
 
   return (
