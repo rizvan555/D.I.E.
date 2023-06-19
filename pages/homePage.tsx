@@ -4,12 +4,13 @@ import axios from "axios";
 
 interface Category {
   category: {
-    drink: { name: string; model: string };
-    food: { name: string; model: string };
-    medicin: { name: string; model: string };
-    cosmetics: { name: string; model: string };
+    drink: { name: string; model: string }[];
+    food: { name: string; model: string }[];
+    medicin: { name: string; model: string }[];
+    cosmetics: { name: string; model: string }[];
   };
 }
+
 function HomePage() {
   const [categories, setCategories] = useState<Category[]>([]);
 
@@ -48,22 +49,30 @@ function HomePage() {
                   className="w-[25vw] border-b py-2 focus:outline-0 text-xl"
                   key={index}
                 >
-                  <option value="drink">
-                    {category.category.drink.name ||
-                      category.category.drink.model}
-                  </option>
-                  <option value="food">
-                    {category.category.food.name ||
-                      category.category.food.model}
-                  </option>
-                  <option value="medicin">
-                    {category.category.medicin.name ||
-                      category.category.medicin.model}
-                  </option>
-                  <option value="cosmetics">
-                    {category.category.cosmetics.name ||
-                      category.category.cosmetics.model}
-                  </option>
+                  {category.category.drink.map((drink, index) => (
+                    <optgroup key={index} label="Drink">
+                      <option value={drink.name}>{drink.name}</option>
+                      <option value={drink.model}>{drink.model}</option>
+                    </optgroup>
+                  ))}
+                  {category.category.food.map((food, index) => (
+                    <optgroup key={index} label="Food">
+                      <option value={food.name}>{food.name}</option>
+                      <option value={food.model}>{food.model}</option>
+                    </optgroup>
+                  ))}
+                  {category.category.medicin.map((medicin, index) => (
+                    <optgroup key={index} label="Medicin">
+                      <option value={medicin.name}>{medicin.name}</option>
+                      <option value={medicin.model}>{medicin.model}</option>
+                    </optgroup>
+                  ))}
+                  {category.category.cosmetics.map((cosmetics, index) => (
+                    <optgroup key={index} label="Cosmetics">
+                      <option value={cosmetics.name}>{cosmetics.name}</option>
+                      <option value={cosmetics.model}>{cosmetics.model}</option>
+                    </optgroup>
+                  ))}
                 </select>
               );
             })}
