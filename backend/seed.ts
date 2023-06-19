@@ -2,20 +2,23 @@ import mongoose, { Schema, model } from "mongoose";
 
 const categorySchema = new Schema({
   category: {
-    drink: [{ name: String, model: String }],
-    food: [{ name: String, model: String }],
-    medicin: [{ name: String, model: String }],
-    cosmetics: [{ name: String, model: String }],
+    drink: [{ name: String, models: [String] }],
+    food: [{ name: String, models: [String] }],
+    medicin: [{ name: String, models: [String] }],
+    cosmetics: [{ name: String, models: [String] }],
   },
 });
 
 const categoryData = [
   {
     category: {
-      drink: [{ name: "Cola", model: "Zero" }],
-      food: [{ name: "Pasta", model: "Belissimo" }],
-      medicin: [{ name: "Aspirin", model: "BelissiDeutsche Pharmamo" }],
-      cosmetics: [{ name: "Schampoo", model: "Pantine" }],
+      drink: [
+        { name: "Cola", models: ["Zero", "Light"] },
+        { name: "Fanta", models: ["Orange", "Limon"] },
+      ],
+      food: [{ name: "Pasta", models: ["Belissimo"] }],
+      medicin: [{ name: "Aspirin", models: ["Deutsche Pharma"] }],
+      cosmetics: [{ name: "Schampoo", models: ["Pantine"] }],
     },
   },
 ];
