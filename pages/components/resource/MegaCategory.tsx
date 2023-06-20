@@ -30,7 +30,6 @@ function MegaCategory() {
   const [clickFood, setClickFood] = useState(false);
   const [clickMedicin, setClickMedicin] = useState(false);
   const [clickCosmetics, setClickCosmetics] = useState(false);
-  const [clickModel, setClickModel] = useState(false);
   const [handleCategory, setHandleCategory] = useState(false);
 
   useEffect(() => {
@@ -50,9 +49,6 @@ function MegaCategory() {
 
   const handleClick = (drinkName: string) => {
     setClickDrink(drinkName);
-  };
-  const handleClickModel = (modelName: string) => {
-    setClickCategoryModel(modelName);
   };
 
   return (
@@ -78,10 +74,19 @@ function MegaCategory() {
                         {drink.name}
                       </button>
                     </div>
+
                     {clickDrink === drink.name &&
                       drink.models.map((model, index) => (
                         <div key={index}>
-                          <button onClick={() => handleClickModel(model.name)}>
+                          <button
+                            onClick={() => {
+                              {
+                                clickCategoryModel === model.name
+                                  ? setClickCategoryModel("")
+                                  : setClickCategoryModel(model.name);
+                              }
+                            }}
+                          >
                             {model.name}
                           </button>
                           {clickCategoryModel === model.name && (
@@ -112,7 +117,13 @@ function MegaCategory() {
                     {clickFood &&
                       food.models.map((model, index) => (
                         <div key={index}>
-                          <button onClick={() => handleClickModel(model.name)}>
+                          <button
+                            onClick={() => {
+                              clickCategoryModel === model.name
+                                ? setClickCategoryModel("")
+                                : setClickCategoryModel(model.name);
+                            }}
+                          >
                             {model.name}
                           </button>
                           {clickCategoryModel === model.name && (
@@ -144,7 +155,11 @@ function MegaCategory() {
                       ? medi.models.map((model, index) => (
                           <div key={index}>
                             <button
-                              onClick={() => handleClickModel(model.name)}
+                              onClick={() => {
+                                clickCategoryModel === model.name
+                                  ? setClickCategoryModel("")
+                                  : setClickCategoryModel(model.name);
+                              }}
                             >
                               {model.name}
                             </button>
@@ -178,7 +193,11 @@ function MegaCategory() {
                       ? cosmetic.models.map((model, index) => (
                           <div key={index}>
                             <button
-                              onClick={() => handleClickModel(model.name)}
+                              onClick={() => {
+                                clickCategoryModel === model.name
+                                  ? setClickCategoryModel("")
+                                  : setClickCategoryModel(model.name);
+                              }}
                             >
                               {model.name}
                             </button>
