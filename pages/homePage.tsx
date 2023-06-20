@@ -1,6 +1,6 @@
 import React from "react";
-import { BiSearchAlt } from "react-icons/bi";
 import MegaCategory from "./components/resource/MegaCategory";
+import SearchProduct from "./components/resource/SearchProduct";
 
 function HomePage() {
   return (
@@ -8,14 +8,7 @@ function HomePage() {
       <div className="flex flex-col items-center w-[50vw] p-4  mx-auto ">
         <h1 className="text-3xl font-bold mb-6">Search Product</h1>
         <div className="p-6 bg-transparent mb-10">
-          <div className="flex items-center gap-2 border-b mb-8 text-xl ">
-            <BiSearchAlt size={30} />
-            <input
-              type="text"
-              className="w-[50vw] p-4 focus:outline-0 "
-              placeholder="Search"
-            />
-          </div>
+          <SearchProduct />
           <div className="h-[30vh]">
             <MegaCategory />
           </div>
