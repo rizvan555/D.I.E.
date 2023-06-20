@@ -41,6 +41,21 @@ function SearchProduct() {
     setInputValue(event.target.value);
   };
 
+  const filteredCategories = categories.filter((category) => {
+    const filteredDrink = category.category.drink.filter((drink) =>
+      drink.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    const filteredFood = category.category.food.filter((food) =>
+      food.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    const filteredMedicine = category.category.medicine.filter((medicine) =>
+      medicine.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    const filteredCosmetics = category.category.cosmetics.filter((cosmetic) =>
+      cosmetic.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+  });
+
   return (
     <div className="flex items-center gap-2 border-b mb-8 text-xl ">
       <BiSearchAlt size={30} />
@@ -51,7 +66,9 @@ function SearchProduct() {
         value={inputValue}
         onChange={handleChange}
       />
+      
     </div>
+
   );
 }
 
