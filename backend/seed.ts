@@ -14,7 +14,7 @@ const categorySchema = new Schema({
         models: [{ name: String, alcohol: String, allergic: String }],
       },
     ],
-    medicin: [
+    medicine: [
       {
         name: String,
         models: [{ name: String, alcohol: String, allergic: String }],
@@ -47,6 +47,10 @@ const categoryData = [
             { name: "Limon", alcohol: "No", allergic: "No" },
           ],
         },
+        {
+          name: "RedBull",
+          models: [{ name: "Redbull", alcohol: "No", allergic: "Yes" }],
+        },
       ],
       food: [
         {
@@ -56,11 +60,22 @@ const categoryData = [
             { name: "Ankara ", alcohol: "No", allergic: "No" },
           ],
         },
+        {
+          name: "Rice",
+          models: [
+            { name: "Mahmood", alcohol: "No", allergic: "No" },
+            { name: "Basmati ", alcohol: "No", allergic: "No" },
+          ],
+        },
       ],
-      medicin: [
+      medicine: [
         {
           name: "Aspirin",
           models: [{ name: "Aspirin", alcohol: "No", allergic: "No" }],
+        },
+        {
+          name: "Novalgin",
+          models: [{ name: "Novalgin", alcohol: "No", allergic: "Yes" }],
         },
       ],
       cosmetics: [

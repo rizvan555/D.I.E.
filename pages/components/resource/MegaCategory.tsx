@@ -1,5 +1,4 @@
 import axios from "axios";
-import { modelNames } from "mongoose";
 import React, { useEffect, useState } from "react";
 
 interface Category {
@@ -12,7 +11,7 @@ interface Category {
       name: string;
       models: [{ name: string; alcohol: string; allergic: string }];
     }[];
-    medicin: {
+    medicine: {
       name: string;
       models: [{ name: string; alcohol: string; allergic: string }];
     }[];
@@ -25,11 +24,11 @@ interface Category {
 
 function MegaCategory() {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [clickDrink, setClickDrink] = useState<string>("");
+  const [clickCategory, setClickCategory] = useState<string>("");
   const [clickCategoryModel, setClickCategoryModel] = useState<string>("");
-  const [clickFood, setClickFood] = useState(false);
-  const [clickMedicin, setClickMedicin] = useState(false);
-  const [clickCosmetics, setClickCosmetics] = useState(false);
+  const [clickFood, setClickFood] = useState<string>("");
+  const [clickMedicine, setClickMedicine] = useState<string>("");
+  const [clickCosmetics, setClickCosmetics] = useState<string>("");
   const [handleCategory, setHandleCategory] = useState(false);
 
   useEffect(() => {
@@ -47,8 +46,28 @@ function MegaCategory() {
     getCategory();
   }, []);
 
-  const handleClick = (drinkName: string) => {
-    setClickDrink(drinkName);
+  const handleClickDrink = (drinkName: string) => {
+    setClickCategory(drinkName === clickCategory ? "" : drinkName);
+    setClickFood("");
+    setClickMedicine("");
+  };
+  const handleClickFood = (foodName: string) => {
+    setClickFood(foodName === clickFood ? "" : foodName);
+    setClickMedicine("");
+    setClickCategory("");
+  };
+
+  const handleClickMedicine = (mediName: string) => {
+    setClickMedicine(mediName === clickMedicine ? "" : mediName);
+    setClickFood("");
+    setClickCategory("");
+  };
+
+  const handleClickCosmetics = (cosmeticName: string) => {
+    setClickCosmetics(cosmeticName === clickCosmetics ? "" : cosmeticName);
+    setClickFood("");
+    setClickCategory("");
+    setClickMedicine("");
   };
 
   return (
@@ -60,37 +79,40 @@ function MegaCategory() {
         CATEGORIES
       </button>
       {handleCategory ? (
-        <div className="flex gap-8 ">
+        <div className="flex gap-8 py-2">
           {categories.map((category, index) => {
             return (
               <div key={index} className="">
                 {category.category.drink.map((drink, index) => (
                   <div key={index}>
-                    <div className="">
+                    <div className="pl-2">
                       <button
-                        onClick={() => handleClick(drink.name)}
-                        className="text-xl text-gray-700 font-bold"
+                        onClick={() => handleClickDrink(drink.name)}
+                        className="text-l text-gray-700 font-bold tracking-wide"
                       >
                         {drink.name}
                       </button>
                     </div>
 
-                    {clickDrink === drink.name &&
+                    {clickCategory === drink.name &&
                       drink.models.map((model, index) => (
-                        <div key={index}>
-                          <button
-                            onClick={() => {
-                              {
-                                clickCategoryModel === model.name
-                                  ? setClickCategoryModel("")
-                                  : setClickCategoryModel(model.name);
-                              }
-                            }}
-                          >
-                            {model.name}
-                          </button>
+                        <div key={index} className="relative">
+                          <div className="pl-4 py-1">
+                            <button
+                              onClick={() => {
+                                {
+                                  clickCategoryModel === model.name
+                                    ? setClickCategoryModel("")
+                                    : setClickCategoryModel(model.name);
+                                }
+                              }}
+                              className=""
+                            >
+                              {model.name}
+                            </button>
+                          </div>
                           {clickCategoryModel === model.name && (
-                            <div>
+                            <div className="pl-6">
                               <div>
                                 <button className="text-gray-400">{`alcohol: ${model.alcohol}`}</button>
                               </div>
@@ -106,17 +128,17 @@ function MegaCategory() {
 
                 {category.category.food.map((food, index) => (
                   <div key={index}>
-                    <div className="">
+                    <div className="pl-2">
                       <button
-                        onClick={() => setClickFood(!clickFood)}
-                        className="text-xl text-gray-700 font-bold"
+                        onClick={() => handleClickFood(food.name)}
+                        className="text-l text-gray-700 font-bold tracking-wide"
                       >
                         {food.name}
                       </button>
                     </div>
-                    {clickFood &&
+                    {clickFood === food.name &&
                       food.models.map((model, index) => (
-                        <div key={index}>
+                        <div key={index} className="pl-4">
                           <button
                             onClick={() => {
                               clickCategoryModel === model.name
@@ -127,7 +149,7 @@ function MegaCategory() {
                             {model.name}
                           </button>
                           {clickCategoryModel === model.name && (
-                            <div>
+                            <div className="pl-5">
                               <div>
                                 <button className="text-gray-400">{`alcohol: ${model.alcohol}`}</button>
                               </div>
@@ -141,19 +163,19 @@ function MegaCategory() {
                   </div>
                 ))}
 
-                {category.category.medicin.map((medi, index) => (
-                  <div key={index}>
+                {category.category.medicine.map((medi, index) => (
+                  <div key={index} className="pl-2">
                     <div className="">
                       <button
-                        onClick={() => setClickMedicin(!clickMedicin)}
-                        className="text-xl text-gray-700 font-bold"
+                        onClick={() => handleClickMedicine(medi.name)}
+                        className="text-l text-gray-700 font-bold tracking-wide"
                       >
                         {medi.name}
                       </button>
                     </div>
-                    {clickMedicin
+                    {clickMedicine
                       ? medi.models.map((model, index) => (
-                          <div key={index}>
+                          <div key={index} className="pl-4">
                             <button
                               onClick={() => {
                                 clickCategoryModel === model.name
@@ -164,7 +186,7 @@ function MegaCategory() {
                               {model.name}
                             </button>
                             {clickCategoryModel === model.name && (
-                              <div>
+                              <div className="pl-5">
                                 <div>
                                   <button className="text-gray-400">{`alcohol: ${model.alcohol}`}</button>
                                 </div>
@@ -180,18 +202,18 @@ function MegaCategory() {
                 ))}
 
                 {category.category.cosmetics.map((cosmetic, index) => (
-                  <div key={index}>
+                  <div key={index} className="pl-2">
                     <div className="">
                       <button
-                        onClick={() => setClickCosmetics(!clickCosmetics)}
-                        className="text-xl text-gray-700 font-bold"
+                        onClick={() => handleClickCosmetics(cosmetic.name)}
+                        className="text-l text-gray-700 font-bold tracking-wide"
                       >
                         {cosmetic.name}
                       </button>
                     </div>
                     {clickCosmetics
                       ? cosmetic.models.map((model, index) => (
-                          <div key={index}>
+                          <div key={index} className="pl-4">
                             <button
                               onClick={() => {
                                 clickCategoryModel === model.name
@@ -202,7 +224,7 @@ function MegaCategory() {
                               {model.name}
                             </button>
                             {clickCategoryModel === model.name && (
-                              <div>
+                              <div className="pl-5">
                                 <div>
                                   <button className="text-gray-400">{`alcohol: ${model.alcohol}`}</button>
                                 </div>
