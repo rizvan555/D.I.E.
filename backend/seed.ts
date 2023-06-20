@@ -51,7 +51,10 @@ const categoryData = [
       food: [
         {
           name: "Pasta",
-          models: [{ name: "Bellisimo", alcohol: "No", allergic: "Yes" }],
+          models: [
+            { name: "Bellisimo", alcohol: "No", allergic: "Yes" },
+            { name: "Ankara ", alcohol: "No", allergic: "No" },
+          ],
         },
       ],
       medicin: [
