@@ -2,10 +2,30 @@ import mongoose, { Schema, model } from "mongoose";
 
 const categorySchema = new Schema({
   category: {
-    drink: [{ name: String, models: [String] }],
-    food: [{ name: String, models: [String] }],
-    medicin: [{ name: String, models: [String] }],
-    cosmetics: [{ name: String, models: [String] }],
+    drink: [
+      {
+        name: String,
+        models: [{ name: String, alcohol: String, allergic: String }],
+      },
+    ],
+    food: [
+      {
+        name: String,
+        models: [{ name: String, alcohol: String, allergic: String }],
+      },
+    ],
+    medicin: [
+      {
+        name: String,
+        models: [{ name: String, alcohol: String, allergic: String }],
+      },
+    ],
+    cosmetics: [
+      {
+        name: String,
+        models: [{ name: String, alcohol: String, allergic: String }],
+      },
+    ],
   },
 });
 
@@ -13,12 +33,39 @@ const categoryData = [
   {
     category: {
       drink: [
-        { name: "Cola", models: ["Zero", "Light"] },
-        { name: "Fanta", models: ["Orange", "Limon"] },
+        {
+          name: "Cola",
+          models: [
+            { name: "Zero", alcohol: "No", allergic: "No" },
+            { name: "Light", alcohol: "No", allergic: "No" },
+          ],
+        },
+        {
+          name: "Fanta",
+          models: [
+            { name: "Orange", alcohol: "No", allergic: "No" },
+            { name: "Limon", alcohol: "No", allergic: "No" },
+          ],
+        },
       ],
-      food: [{ name: "Pasta", models: ["Belissimo"] }],
-      medicin: [{ name: "Aspirin", models: ["Deutsche Pharma"] }],
-      cosmetics: [{ name: "Schampoo", models: ["Pantine"] }],
+      food: [
+        {
+          name: "Pasta",
+          models: [{ name: "Bellisimo", alcohol: "No", allergic: "Yes" }],
+        },
+      ],
+      medicin: [
+        {
+          name: "Aspirin",
+          models: [{ name: "Aspirin", alcohol: "No", allergic: "No" }],
+        },
+      ],
+      cosmetics: [
+        {
+          name: "Schampoo",
+          models: [{ name: "Pantine", alcohol: "No", allergic: "No" }],
+        },
+      ],
     },
   },
 ];
