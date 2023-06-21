@@ -71,7 +71,7 @@ function MegaCategory() {
   };
 
   return (
-    <div className="mt-16">
+    <div className="mt-6">
       <button
         onClick={() => setHandleCategory(!handleCategory)}
         className="text-2xl border-b font-bold"
@@ -79,10 +79,10 @@ function MegaCategory() {
         CATEGORIES
       </button>
       {handleCategory ? (
-        <div className="flex gap-8 py-2">
+        <div className="flex gap-8 py-2 justify-center">
           {categories.map((category, index) => {
             return (
-              <div key={index} className="">
+              <div key={index} className="flex gap-12">
                 {category.category.drink.map((drink, index) => (
                   <div key={index}>
                     <div className="pl-2">
