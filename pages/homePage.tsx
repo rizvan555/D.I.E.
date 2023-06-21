@@ -6,23 +6,30 @@ interface Category {
   category: {
     drink: {
       name: string;
-      models: [{ name: string; alcohol: string; allergic: string }];
+      models: [
+        { name: string; alcohol: string; allergic: string; halal: string }
+      ];
     }[];
     food: {
       name: string;
-      models: [{ name: string; alcohol: string; allergic: string }];
+      models: [
+        { name: string; alcohol: string; allergic: string; halal: string }
+      ];
     }[];
     medicine: {
       name: string;
-      models: [{ name: string; alcohol: string; allergic: string }];
+      models: [
+        { name: string; alcohol: string; allergic: string; halal: string }
+      ];
     }[];
     cosmetics: {
       name: string;
-      models: [{ name: string; alcohol: string; allergic: string }];
+      models: [
+        { name: string; alcohol: string; allergic: string; halal: string }
+      ];
     }[];
   };
 }
-
 
 function HomePage() {
   const [categories, setCategories] = useState<Category[]>([]);

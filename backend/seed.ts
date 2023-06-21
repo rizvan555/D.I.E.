@@ -5,25 +5,33 @@ const categorySchema = new Schema({
     drink: [
       {
         name: String,
-        models: [{ name: String, alcohol: String, allergic: String }],
+        models: [
+          { name: String, alcohol: String, allergic: String, halal: String },
+        ],
       },
     ],
     food: [
       {
         name: String,
-        models: [{ name: String, alcohol: String, allergic: String }],
+        models: [
+          { name: String, alcohol: String, allergic: String, halal: String },
+        ],
       },
     ],
     medicine: [
       {
         name: String,
-        models: [{ name: String, alcohol: String, allergic: String }],
+        models: [
+          { name: String, alcohol: String, allergic: String, halal: String },
+        ],
       },
     ],
     cosmetics: [
       {
         name: String,
-        models: [{ name: String, alcohol: String, allergic: String }],
+        models: [
+          { name: String, alcohol: String, allergic: String, halal: String },
+        ],
       },
     ],
   },
@@ -36,52 +44,60 @@ const categoryData = [
         {
           name: "PepsiCola",
           models: [
-            { name: "Zero", alcohol: "No", allergic: "No" },
-            { name: "Light", alcohol: "No", allergic: "No" },
+            { name: "Zero", alcohol: "No", allergic: "No", halal: "Yes" },
+            { name: "Light", alcohol: "No", allergic: "No", halal: "Yes" },
           ],
         },
         {
           name: "Fanta",
           models: [
-            { name: "Orange", alcohol: "No", allergic: "No" },
-            { name: "Limon", alcohol: "No", allergic: "No" },
+            { name: "Orange", alcohol: "No", allergic: "No", halal: "Yes" },
+            { name: "Limon", alcohol: "No", allergic: "No", halal: "Yes" },
           ],
         },
         {
           name: "RedBull",
-          models: [{ name: "Redbull", alcohol: "No", allergic: "Yes" }],
+          models: [
+            { name: "Redbull", alcohol: "No", allergic: "Yes", halal: "Yes" },
+          ],
         },
       ],
       food: [
         {
           name: "Pasta",
           models: [
-            { name: "Bellisimo", alcohol: "No", allergic: "Yes" },
-            { name: "Ankara ", alcohol: "No", allergic: "No" },
+            { name: "Bellisimo", alcohol: "No", allergic: "Yes", halal: "Yes" },
+            { name: "Ankara ", alcohol: "No", allergic: "No", halal: "Yes" },
           ],
         },
         {
           name: "Rice",
           models: [
-            { name: "Mahmood", alcohol: "No", allergic: "No" },
-            { name: "Basmati ", alcohol: "No", allergic: "No" },
+            { name: "Mahmood", alcohol: "No", allergic: "No", halal: "Yes" },
+            { name: "Basmati ", alcohol: "No", allergic: "No", halal: "Yes" },
           ],
         },
       ],
       medicine: [
         {
           name: "Aspirin",
-          models: [{ name: "Aspirin", alcohol: "No", allergic: "No" }],
+          models: [
+            { name: "Aspirin", alcohol: "No", allergic: "No", halal: "Yes" },
+          ],
         },
         {
           name: "Novalgin",
-          models: [{ name: "Novalgin", alcohol: "No", allergic: "Yes" }],
+          models: [
+            { name: "Novalgin", alcohol: "No", allergic: "Yes", halal: "Yes" },
+          ],
         },
       ],
       cosmetics: [
         {
           name: "Schampoo",
-          models: [{ name: "Pantine", alcohol: "No", allergic: "No" }],
+          models: [
+            { name: "Pantine", alcohol: "No", allergic: "No", halal: "Yes" },
+          ],
         },
       ],
     },
