@@ -49,41 +49,51 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
           </button>
         </div>
       </div>
-      <div>
-        {searchResults.map((result: any, index: number) => (
-          <div key={index}>
-            <h1 className="text-2xl font-bold mb-4">{result.name}</h1>
-
-            {result.models.map((model: any, index: number) => (
-              <ul key={index} className="flex gap-4 p-4">
-                <li className="font-bold">{model.name}</li>
-                <li className="flex items-center gap-2">
-                  Alcohol:
-                  <p
-                    className={`${
-                      model.alcohol === "Yes" ? "text-red-500" : "text-green-500"
-                    }`}
+      {inputValue && (
+        <div className="text-center border px-2 w-full">
+          {searchResults.map((result: any, index: number) => (
+            <div key={index}>
+              <h1 className="text-2xl font-bold my-4 text-primary">
+                {result.name}
+              </h1>
+              <div className="flex gap-4">
+                {result.models.map((model: any, index: number) => (
+                  <ul
+                    key={index}
+                    className="flex flex-col items-center gap-4 p-4"
                   >
-                    {model.alcohol}
-                  </p>
-                </li>
-                <li className="flex items-center gap-2">
-                  Allergic:
-                  <p
-                    className={`${
-                      model.allergic === "Yes"
-                        ? "text-red-500"
-                        : "text-green-500"
-                    }`}
-                  >
-                    {model.allergic}
-                  </p>
-                </li>
-              </ul>
-            ))}
-          </div>
-        ))}
-      </div>
+                    <li className="font-bold text-red-500">{model.name}</li>
+                    <li className="flex items-center gap-2">
+                      Alcohol:
+                      <p
+                        className={`${
+                          model.alcohol === "Yes"
+                            ? "text-red-500"
+                            : "text-green-500"
+                        } border px-2`}
+                      >
+                        {model.alcohol}
+                      </p>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      Allergic:
+                      <p
+                        className={`${
+                          model.allergic === "Yes"
+                            ? "text-red-500"
+                            : "text-green-500"
+                        } border px-2`}
+                      >
+                        {model.allergic}
+                      </p>
+                    </li>
+                  </ul>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

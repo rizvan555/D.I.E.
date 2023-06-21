@@ -34,7 +34,7 @@ const categoryData = [
     category: {
       drink: [
         {
-          name: "Cola",
+          name: "PepsiCola",
           models: [
             { name: "Zero", alcohol: "No", allergic: "No" },
             { name: "Light", alcohol: "No", allergic: "No" },
