@@ -7,25 +7,85 @@ interface Category {
     drink: {
       name: string;
       models: [
-        { name: string; alcohol: string; allergic: string; halal: string }
+        {
+          name: string;
+          alcohol: string;
+          allergic: {
+            Gluten: string;
+            Milk: string;
+            Egg: string;
+            Nuts: string;
+            Sesame: string;
+            Wheat: string;
+            Fish: string;
+          };
+          halal: string;
+          vegan: string;
+          vegetarian: string;
+        }
       ];
     }[];
     food: {
       name: string;
       models: [
-        { name: string; alcohol: string; allergic: string; halal: string }
+        {
+          name: string;
+          alcohol: string;
+          allergic: {
+            Gluten: string;
+            Milk: string;
+            Egg: string;
+            Nuts: string;
+            Sesame: string;
+            Wheat: string;
+            Fish: string;
+          };
+          halal: string;
+          vegan: string;
+          vegetarian: string;
+        }
       ];
     }[];
     medicine: {
       name: string;
       models: [
-        { name: string; alcohol: string; allergic: string; halal: string }
+        {
+          name: string;
+          alcohol: string;
+          allergic: {
+            Gluten: string;
+            Milk: string;
+            Egg: string;
+            Nuts: string;
+            Sesame: string;
+            Wheat: string;
+            Fish: string;
+          };
+          halal: string;
+          vegan: string;
+          vegetarian: string;
+        }
       ];
     }[];
     cosmetics: {
       name: string;
       models: [
-        { name: string; alcohol: string; allergic: string; halal: string }
+        {
+          name: string;
+          alcohol: string;
+          allergic: {
+            Gluten: string;
+            Milk: string;
+            Egg: string;
+            Nuts: string;
+            Sesame: string;
+            Wheat: string;
+            Fish: string;
+          };
+          halal: string;
+          vegan: string;
+          vegetarian: string;
+        }
       ];
     }[];
   };
@@ -59,7 +119,14 @@ function HomePage() {
         .map((drink) => ({
           category: "Drink",
           name: drink.name,
-          models: drink.models,
+          models: drink.models.map((drinkModel) => ({
+            name: drinkModel.name,
+            alcohol: drinkModel.alcohol,
+            allergic: drinkModel.allergic,
+            halal: drinkModel.halal,
+            vegan: drinkModel.vegan,
+            vegetarian: drinkModel.vegetarian,
+          })),
         }));
 
       const foodResults = category.category.food
@@ -69,7 +136,14 @@ function HomePage() {
         .map((food) => ({
           category: "Food",
           name: food.name,
-          models: food.models,
+          models: food.models.map((foodModel) => ({
+            name: foodModel.name,
+            alcohol: foodModel.alcohol,
+            allergic: foodModel.allergic,
+            halal: foodModel.halal,
+            vegan: foodModel.vegan,
+            vegetarian: foodModel.vegetarian,
+          })),
         }));
 
       const medicineResults = category.category.medicine
@@ -79,7 +153,14 @@ function HomePage() {
         .map((medicine) => ({
           category: "Medicine",
           name: medicine.name,
-          models: medicine.models,
+          models: medicine.models.map((medicineModel) => ({
+            name: medicineModel.name,
+            alcohol: medicineModel.alcohol,
+            allergic: medicineModel.allergic,
+            halal: medicineModel.halal,
+            vegan: medicineModel.vegan,
+            vegetarian: medicineModel.vegetarian,
+          })),
         }));
 
       const cosmeticsResults = category.category.cosmetics
@@ -89,7 +170,14 @@ function HomePage() {
         .map((cosmetic) => ({
           category: "Cosmetics",
           name: cosmetic.name,
-          models: cosmetic.models,
+          models: cosmetic.models.map((cosmeticModel) => ({
+            name: cosmeticModel.name,
+            alcohol: cosmeticModel.alcohol,
+            allergic: cosmeticModel.allergic,
+            halal: cosmeticModel.halal,
+            vegan: cosmeticModel.vegan,
+            vegetarian: cosmeticModel.vegetarian,
+          })),
         }));
 
       return [

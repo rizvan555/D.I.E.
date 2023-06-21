@@ -1,4 +1,5 @@
 import mongoose, { Schema, model } from "mongoose";
+import { Gluten } from "next/font/google";
 
 const categorySchema = new Schema({
   category: {
@@ -6,7 +7,22 @@ const categorySchema = new Schema({
       {
         name: String,
         models: [
-          { name: String, alcohol: String, allergic: String, halal: String },
+          {
+            name: String,
+            alcohol: String,
+            allergic: {
+              Gluten: String,
+              Milk: String,
+              Egg: String,
+              Nuts: String,
+              Sesame: String,
+              Wheat: String,
+              Fish: String,
+            },
+            halal: String,
+            vegan: String,
+            vegetarian: String,
+          },
         ],
       },
     ],
@@ -14,7 +30,22 @@ const categorySchema = new Schema({
       {
         name: String,
         models: [
-          { name: String, alcohol: String, allergic: String, halal: String },
+          {
+            name: String,
+            alcohol: String,
+            allergic: {
+              Gluten: String,
+              Milk: String,
+              Egg: String,
+              Nuts: String,
+              Sesame: String,
+              Wheat: String,
+              Fish: String,
+            },
+            halal: String,
+            vegan: String,
+            vegetarian: String,
+          },
         ],
       },
     ],
@@ -22,7 +53,22 @@ const categorySchema = new Schema({
       {
         name: String,
         models: [
-          { name: String, alcohol: String, allergic: String, halal: String },
+          {
+            name: String,
+            alcohol: String,
+            allergic: {
+              Gluten: String,
+              Milk: String,
+              Egg: String,
+              Nuts: String,
+              Sesame: String,
+              Wheat: String,
+              Fish: String,
+            },
+            halal: String,
+            vegan: String,
+            vegetarian: String,
+          },
         ],
       },
     ],
@@ -30,7 +76,22 @@ const categorySchema = new Schema({
       {
         name: String,
         models: [
-          { name: String, alcohol: String, allergic: String, halal: String },
+          {
+            name: String,
+            alcohol: String,
+            allergic: {
+              Gluten: String,
+              Milk: String,
+              Egg: String,
+              Nuts: String,
+              Sesame: String,
+              Wheat: String,
+              Fish: String,
+            },
+            halal: String,
+            vegan: String,
+            vegetarian: String,
+          },
         ],
       },
     ],
@@ -44,21 +105,96 @@ const categoryData = [
         {
           name: "PepsiCola",
           models: [
-            { name: "Zero", alcohol: "No", allergic: "No", halal: "Yes" },
-            { name: "Light", alcohol: "No", allergic: "No", halal: "Yes" },
+            {
+              name: "Zero",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
+            {
+              name: "Light",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
           ],
         },
         {
           name: "Fanta",
           models: [
-            { name: "Orange", alcohol: "No", allergic: "No", halal: "Yes" },
-            { name: "Limon", alcohol: "No", allergic: "No", halal: "Yes" },
+            {
+              name: "Orange",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
+            {
+              name: "Limon",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
           ],
         },
         {
           name: "RedBull",
           models: [
-            { name: "Redbull", alcohol: "No", allergic: "Yes", halal: "Yes" },
+            {
+              name: "Redbull",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
           ],
         },
       ],
@@ -66,15 +202,75 @@ const categoryData = [
         {
           name: "Pasta",
           models: [
-            { name: "Bellisimo", alcohol: "No", allergic: "Yes", halal: "Yes" },
-            { name: "Ankara ", alcohol: "No", allergic: "No", halal: "Yes" },
+            {
+              name: "Bellisimo",
+              alcohol: "No",
+              allergic: {
+                Gluten: "Yes",
+                Milk: "No",
+                Egg: "Yes",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
+            {
+              name: "Ankara ",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "Yes",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
           ],
         },
         {
           name: "Rice",
           models: [
-            { name: "Mahmood", alcohol: "No", allergic: "No", halal: "Yes" },
-            { name: "Basmati ", alcohol: "No", allergic: "No", halal: "Yes" },
+            {
+              name: "Mahmood",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
+            {
+              name: "Basmati ",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
           ],
         },
       ],
@@ -82,13 +278,43 @@ const categoryData = [
         {
           name: "Aspirin",
           models: [
-            { name: "Aspirin", alcohol: "No", allergic: "No", halal: "Yes" },
+            {
+              name: "Aspirin",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
           ],
         },
         {
           name: "Novalgin",
           models: [
-            { name: "Novalgin", alcohol: "No", allergic: "Yes", halal: "Yes" },
+            {
+              name: "Novalgin",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
           ],
         },
       ],
@@ -96,7 +322,22 @@ const categoryData = [
         {
           name: "Schampoo",
           models: [
-            { name: "Pantine", alcohol: "No", allergic: "No", halal: "Yes" },
+            {
+              name: "Pantine",
+              alcohol: "No",
+              allergic: {
+                Gluten: "No",
+                Milk: "No",
+                Egg: "No",
+                Nuts: "No",
+                Sesame: "No",
+                Wheat: "No",
+                Fish: "No",
+              },
+              halal: "Yes",
+              vegan: "Yes",
+              vegetarian: "Yes",
+            },
           ],
         },
       ],
