@@ -7,7 +7,7 @@ interface myResult {
 interface SearchResult {
   category: string;
   name: string;
-  models: { name: string; alcohol: string; allergic: string }[];
+  models: { name: string; alcohol: string; allergic: string; halal: string }[];
 }
 
 function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
@@ -49,41 +49,60 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
           </button>
         </div>
       </div>
-      <div>
-        {searchResults.map((result: any, index: number) => (
-          <div key={index}>
-            <h1 className="text-2xl font-bold mb-4">{result.name}</h1>
-
-            {result.models.map((model: any, index: number) => (
-              <ul key={index} className="flex gap-4 p-4">
-                <li className="font-bold">{model.name}</li>
-                <li className="flex items-center gap-2">
-                  Alcohol:
-                  <p
-                    className={`${
-                      model.alcohol === "Yes" ? "text-red-500" : "text-green-500"
-                    }`}
-                  >
-                    {model.alcohol}
-                  </p>
-                </li>
-                <li className="flex items-center gap-2">
-                  Allergic:
-                  <p
-                    className={`${
-                      model.allergic === "Yes"
-                        ? "text-red-500"
-                        : "text-green-500"
-                    }`}
-                  >
-                    {model.allergic}
-                  </p>
-                </li>
-              </ul>
-            ))}
-          </div>
-        ))}
-      </div>
+      {inputValue && (
+        <div className="text-center  px-2 w-full">
+          {searchResults.map((result: any, index: number) => (
+            <div key={index}>
+              <h1 className="text-2xl font-bold my-4 text-black uppercase tracking-wider">
+                {result.name}
+              </h1>
+              <div className="flex gap-4 p-4">
+                {result.models.map((model: any, index: number) => (
+                  <ul key={index} className="flex flex-col gap-4 py-2 px-3 border">
+                    <li className="font-bold text-primary">
+                      {model.name}
+                    </li>
+                    <li className="flex items-center gap-2 font-semibold text-gray-600">
+                      Alcohol:
+                      <p
+                        className={`${
+                          model.alcohol === "Yes"
+                            ? "bg-red-500"
+                            : "bg-green-500"
+                        } border px-2 text-white text-[14px]`}
+                      >
+                        {model.alcohol}
+                      </p>
+                    </li>
+                    <li className="flex items-center gap-2 font-semibold text-gray-600">
+                      Allergic:
+                      <p
+                        className={`${
+                          model.allergic === "Yes"
+                            ? "bg-red-500"
+                            : "bg-green-500"
+                        } border px-2 text-white text-[14px]`}
+                      >
+                        {model.allergic}
+                      </p>
+                    </li>
+                    <li className="flex items-center gap-7 font-semibold text-gray-600">
+                      Halal:
+                      <p
+                        className={`${
+                          model.halal === "No" ? "bg-red-600" : "bg-green-500"
+                        } border px-2 text-white text-[14px]`}
+                      >
+                        {model.halal}
+                      </p>
+                    </li>
+                  </ul>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
