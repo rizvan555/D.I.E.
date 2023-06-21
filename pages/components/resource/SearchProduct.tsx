@@ -4,6 +4,11 @@ import { BiSearchAlt } from "react-icons/bi";
 interface myResult {
   result: string;
 }
+interface SearchResult {
+  category: string;
+  name: string;
+  models: { name: string; alcohol: string; allergic: string }[];
+}
 
 function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
   const [inputValue, setInputValue] = useState<string>("");
@@ -46,7 +51,37 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
       </div>
       <div>
         {searchResults.map((result: any, index: number) => (
-          <div key={index}>{result}</div>
+          <div key={index}>
+            <h1 className="text-2xl font-bold mb-4">{result.name}</h1>
+
+            {result.models.map((model: any, index: number) => (
+              <ul key={index} className="flex gap-4 p-4">
+                <li className="font-bold">{model.name}</li>
+                <li className="flex items-center gap-2">
+                  Alcohol:
+                  <p
+                    className={`${
+                      model.alcohol === "Yes" ? "text-red-500" : "text-green-500"
+                    }`}
+                  >
+                    {model.alcohol}
+                  </p>
+                </li>
+                <li className="flex items-center gap-2">
+                  Allergic:
+                  <p
+                    className={`${
+                      model.allergic === "Yes"
+                        ? "text-red-500"
+                        : "text-green-500"
+                    }`}
+                  >
+                    {model.allergic}
+                  </p>
+                </li>
+              </ul>
+            ))}
+          </div>
         ))}
       </div>
     </div>

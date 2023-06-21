@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MegaCategory from "./components/resource/MegaCategory";
 import SearchProduct from "./components/resource/SearchProduct";
 import axios from "axios";
 
@@ -23,6 +22,7 @@ interface Category {
     }[];
   };
 }
+
 
 function HomePage() {
   const [categories, setCategories] = useState<Category[]>([]);
@@ -49,25 +49,41 @@ function HomePage() {
         .filter((drink) =>
           drink.name.toLowerCase().includes(inputValue.toLowerCase())
         )
-        .map((drink) => drink.name)
+        .map((drink) => ({
+          category: "Drink",
+          name: drink.name,
+          models: drink.models,
+        }));
 
       const foodResults = category.category.food
         .filter((food) =>
           food.name.toLowerCase().includes(inputValue.toLowerCase())
         )
-        .map((food) => food.name);
+        .map((food) => ({
+          category: "Food",
+          name: food.name,
+          models: food.models,
+        }));
 
       const medicineResults = category.category.medicine
         .filter((medicine) =>
           medicine.name.toLowerCase().includes(inputValue.toLowerCase())
         )
-        .map((medicine) => medicine.name);
+        .map((medicine) => ({
+          category: "Medicine",
+          name: medicine.name,
+          models: medicine.models,
+        }));
 
       const cosmeticsResults = category.category.cosmetics
         .filter((cosmetic) =>
           cosmetic.name.toLowerCase().includes(inputValue.toLowerCase())
         )
-        .map((cosmetic) => cosmetic.name);
+        .map((cosmetic) => ({
+          category: "Cosmetics",
+          name: cosmetic.name,
+          models: cosmetic.models,
+        }));
 
       return [
         ...drinkResults,
