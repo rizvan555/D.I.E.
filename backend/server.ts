@@ -1,5 +1,5 @@
 import express from "express";
-import { Category } from "./seed.ts";
+import { Category, CategoryPage } from "./seed.ts";
 import mongoose from "mongoose";
 import cors from "cors";
 
@@ -22,6 +22,23 @@ app.get("/categories/category", async (req, res) => {
 app.post("/categories/category", async (req, res) => {
   try {
     const newCategory = await Category.create(req.body);
+    res.status(200).json(newCategory);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.get("/categories/categorypages", async (req, res) => {
+  try {
+    const categories = await CategoryPage.find();
+    res.send(categories);
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.post("/categories/categorypages", async (req, res) => {
+  try {
+    const newCategory = await CategoryPage.create(req.body);
     res.status(200).json(newCategory);
   } catch (error) {
     console.log(error);

@@ -56,13 +56,11 @@ function MegaCategory() {
     setClickMedicine("");
     setClickCategory("");
   };
-
   const handleClickMedicine = (mediName: string) => {
     setClickMedicine(mediName === clickMedicine ? "" : mediName);
     setClickFood("");
     setClickCategory("");
   };
-
   const handleClickCosmetics = (cosmeticName: string) => {
     setClickCosmetics(cosmeticName === clickCosmetics ? "" : cosmeticName);
     setClickFood("");
