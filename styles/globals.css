@@ -6,7 +6,7 @@
   text-align: center;
 }
 span {
-  color: white;
+  color: red;
   animation: blink 1s linear infinite;
 }
 @keyframes blink {
