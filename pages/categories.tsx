@@ -144,16 +144,19 @@ function Categories() {
         CATEGORIES
       </button>
       {handleCategory ? (
-        <div className="flex gap-8 py-2 justify-center">
+        <div className="flex gap-8 py-2 justify-center ">
           {categories.map((category, index) => {
             return (
-              <div key={index} className="flex gap-20">
+              <div key={index} className="flex gap-12">
                 {category.categoryName.drink.map((drink, index) => (
-                  <div key={index}>
-                    <div className="pl-2">
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center py-2 px-6 gap-3"
+                  >
+                    <div className="w-[15vw]">
                       <button
                         onClick={() => handleClickDrink(drink.name)}
-                        className="text-l text-gray-700 font-bold tracking-wide"
+                        className="text-xl text-gray-600 font-bold tracking-wide mb-6"
                       >
                         {drink.name}
                       </button>
@@ -161,8 +164,8 @@ function Categories() {
 
                     {clickCategory === drink.name &&
                       drink.models.map((model, index) => (
-                        <div key={index} className="relative">
-                          <div className="pl-4 py-1">
+                        <div key={index} className="relative border">
+                          <div className="px-4 py-1  w-60">
                             <button
                               onClick={() => {
                                 {
@@ -192,18 +195,21 @@ function Categories() {
                 ))}
 
                 {category.categoryName.food.map((food, index) => (
-                  <div key={index}>
-                    <div className="pl-2">
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center py-2 px-6 gap-3"
+                  >
+                    <div className="w-[15vw]">
                       <button
                         onClick={() => handleClickFood(food.name)}
-                        className="text-l text-gray-700 font-bold tracking-wide"
+                        className="text-xl text-gray-600 font-bold tracking-wide mb-6"
                       >
                         {food.name}
                       </button>
                     </div>
                     {clickFood === food.name &&
                       food.models.map((model, index) => (
-                        <div key={index} className="pl-4">
+                        <div key={index} className="px-4 py-1 border w-60">
                           <button
                             onClick={() => {
                               clickCategoryModel === model.name
@@ -229,18 +235,21 @@ function Categories() {
                 ))}
 
                 {category.categoryName.medicine.map((medi, index) => (
-                  <div key={index} className="pl-2">
-                    <div className="">
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center py-2 px-6 gap-3"
+                  >
+                    <div className="w-[15vw]">
                       <button
                         onClick={() => handleClickMedicine(medi.name)}
-                        className="text-l text-gray-700 font-bold tracking-wide"
+                        className="text-xl text-gray-600 font-bold tracking-wide mb-6"
                       >
                         {medi.name}
                       </button>
                     </div>
                     {clickMedicine
                       ? medi.models.map((model, index) => (
-                          <div key={index} className="pl-4">
+                          <div key={index} className="px-4 py-1 border w-60">
                             <button
                               onClick={() => {
                                 clickCategoryModel === model.name
@@ -267,18 +276,21 @@ function Categories() {
                 ))}
 
                 {category.categoryName.cosmetics.map((cosmetic, index) => (
-                  <div key={index} className="pl-2">
-                    <div className="">
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center  py-2 px-6 gap-3"
+                  >
+                    <div className="w-[15vw]">
                       <button
                         onClick={() => handleClickCosmetics(cosmetic.name)}
-                        className="text-l text-gray-700 font-bold tracking-wide"
+                        className="text-xl text-gray-600 font-bold tracking-wide mb-6"
                       >
                         {cosmetic.name}
                       </button>
                     </div>
                     {clickCosmetics
                       ? cosmetic.models.map((model, index) => (
-                          <div key={index} className="pl-4">
+                          <div key={index} className="px-4 py-1 border w-60">
                             <button
                               onClick={() => {
                                 clickCategoryModel === model.name
