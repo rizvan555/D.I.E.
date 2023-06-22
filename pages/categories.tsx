@@ -136,27 +136,24 @@ function Categories() {
   };
 
   return (
-    <div className="text-center my-6">
+    <div className="text-center my-6 h-[100vh]">
       <button
         onClick={() => setHandleCategory(!handleCategory)}
         className="text-2xl border-b font-bold mb-8"
       >
         CATEGORIES
       </button>
-      {handleCategory ? (
-        <div className="flex gap-8 py-2 justify-center ">
-          {categories.map((category, index) => {
-            return (
-              <div key={index} className="flex gap-12">
-                {category.categoryName.drink.map((drink, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center justify-center py-2 px-6 gap-3"
-                  >
+      <div className="flex gap-8 py-2 justify-center">
+        {categories.map((category, index) => {
+          return (
+            <div key={index} className="flex gap-20">
+              {category.categoryName.drink.map((drink, index) => (
+                <div key={index}>
+                  <div className="flex flex-col items-center justify-center py-2 px-6 gap-3 w-[15vw]">
                     <div className="w-[15vw]">
                       <button
                         onClick={() => handleClickDrink(drink.name)}
-                        className="text-xl text-gray-600 font-bold tracking-wide mb-6"
+                        className="text-xl text-gray-600 font-bold tracking-wider mb-6"
                       >
                         {drink.name}
                       </button>
@@ -164,8 +161,11 @@ function Categories() {
 
                     {clickCategory === drink.name &&
                       drink.models.map((model, index) => (
-                        <div key={index} className="relative border">
-                          <div className="px-4 py-1  w-60">
+                        <div
+                          key={index}
+                          className="px-4 py-3 border w-60 categoryType text-center font-semibold"
+                        >
+                          <div className="">
                             <button
                               onClick={() => {
                                 {
@@ -174,42 +174,171 @@ function Categories() {
                                     : setClickCategoryModel(model.name);
                                 }
                               }}
-                              className=""
                             >
                               {model.name}
                             </button>
                           </div>
                           {clickCategoryModel === model.name && (
-                            <div className="pl-6">
-                              <div>
-                                <button className="text-gray-400">{`alcohol: ${model.alcohol}`}</button>
+                            <div className=" text-start text-white">
+                              <div className="">
+                                <button className="flex gap-12 px-4 text-start  mb-2">
+                                  <p className="w-20 text-gray-400">Alcohol:</p>
+                                  <p
+                                    className={`${
+                                      model.alcohol === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.alcohol}`}</p>
+                                </button>
                               </div>
                               <div>
-                                <button className="text-gray-400">{`allergic: ${model.allergic}`}</button>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Gluten:</p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Gluten === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Gluten}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2 ">
+                                  <p className="w-20 text-gray-400">Milk: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Milk === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Milk}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Egg: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Egg === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Egg}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Nuts: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Nuts === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Nuts}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Sesame: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Sesame === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Sesame}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Wheat: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Wheat === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Wheat}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Fish: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Fish === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Fish}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Halal: </p>
+                                  <p
+                                    className={`${
+                                      model.halal === "Yes"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.halal}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex justify-between gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Vegan: </p>
+                                  <p
+                                    className={`${
+                                      model.vegan === "Yes"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.vegan}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">
+                                    Vegetarian:{" "}
+                                  </p>
+                                  <p
+                                    className={`${
+                                      model.vegetarian === "Yes"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.vegetarian}`}</p>
+                                </button>
                               </div>
                             </div>
                           )}
                         </div>
                       ))}
                   </div>
-                ))}
+                </div>
+              ))}
 
-                {category.categoryName.food.map((food, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center justify-center py-2 px-6 gap-3"
-                  >
+              {category.categoryName.food.map((food, index) => (
+                <div key={index}>
+                  <div className="flex flex-col items-center justify-center py-2 px-6 gap-3 w-[15vw]">
                     <div className="w-[15vw]">
                       <button
                         onClick={() => handleClickFood(food.name)}
-                        className="text-xl text-gray-600 font-bold tracking-wide mb-6"
+                        className="text-xl text-gray-600 font-bold tracking-wider mb-6"
                       >
                         {food.name}
                       </button>
                     </div>
                     {clickFood === food.name &&
                       food.models.map((model, index) => (
-                        <div key={index} className="px-4 py-1 border w-60">
+                        <div
+                          key={index}
+                          className="px-4 py-3 border w-60 categoryType text-center font-semibold"
+                        >
                           <button
                             onClick={() => {
                               clickCategoryModel === model.name
@@ -220,77 +349,359 @@ function Categories() {
                             {model.name}
                           </button>
                           {clickCategoryModel === model.name && (
-                            <div className="pl-5">
-                              <div>
-                                <button className="text-gray-400">{`alcohol: ${model.alcohol}`}</button>
+                            <div className=" text-start text-white">
+                              <div className="">
+                                <button className="flex gap-12 px-4 text-start  mb-2">
+                                  <p className="w-20 text-gray-400">Alcohol:</p>
+                                  <p
+                                    className={`${
+                                      model.alcohol === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.alcohol}`}</p>
+                                </button>
                               </div>
                               <div>
-                                <button className="text-gray-400">{`allergic: ${model.allergic}`}</button>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Gluten:</p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Gluten === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Gluten}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2 ">
+                                  <p className="w-20 text-gray-400">Milk: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Milk === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Milk}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Egg: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Egg === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Egg}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Nuts: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Nuts === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Nuts}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Sesame: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Sesame === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Sesame}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Wheat: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Wheat === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Wheat}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Fish: </p>
+                                  <p
+                                    className={`${
+                                      model.allergic.Fish === "No"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.allergic.Fish}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Halal: </p>
+                                  <p
+                                    className={`${
+                                      model.halal === "Yes"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.halal}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex justify-between gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">Vegan: </p>
+                                  <p
+                                    className={`${
+                                      model.vegan === "Yes"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.vegan}`}</p>
+                                </button>
+                              </div>
+                              <div>
+                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                  <p className="w-20 text-gray-400">
+                                    Vegetarian:{" "}
+                                  </p>
+                                  <p
+                                    className={`${
+                                      model.vegetarian === "Yes"
+                                        ? "bg-green-500"
+                                        : "bg-red-500"
+                                    } border px-2`}
+                                  >{` ${model.vegetarian}`}</p>
+                                </button>
                               </div>
                             </div>
                           )}
                         </div>
                       ))}
                   </div>
-                ))}
+                </div>
+              ))}
 
-                {category.categoryName.medicine.map((medi, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center justify-center py-2 px-6 gap-3"
-                  >
-                    <div className="w-[15vw]">
-                      <button
-                        onClick={() => handleClickMedicine(medi.name)}
-                        className="text-xl text-gray-600 font-bold tracking-wide mb-6"
-                      >
-                        {medi.name}
-                      </button>
-                    </div>
-                    {clickMedicine
-                      ? medi.models.map((model, index) => (
-                          <div key={index} className="px-4 py-1 border w-60">
-                            <button
-                              onClick={() => {
-                                clickCategoryModel === model.name
-                                  ? setClickCategoryModel("")
-                                  : setClickCategoryModel(model.name);
-                              }}
+              {category.categoryName.medicine.map((medi, index) => (
+                <div key={index}>
+                  <div>
+                    <div className="flex flex-col items-center justify-center  py-2 px-6 gap-3 w-[15vw]">
+                      <div className="w-[15vw]">
+                        <button
+                          onClick={() => handleClickMedicine(medi.name)}
+                          className="text-xl text-gray-600 font-bold tracking-wider mb-6"
+                        >
+                          {medi.name}
+                        </button>
+                      </div>
+                      {clickMedicine
+                        ? medi.models.map((model, index) => (
+                            <div
+                              key={index}
+                              className="px-4 py-3 border w-60 categoryType text-center font-semibold"
                             >
-                              {model.name}
-                            </button>
-                            {clickCategoryModel === model.name && (
-                              <div className="pl-5">
-                                <div>
-                                  <button className="text-gray-400">{`alcohol: ${model.alcohol}`}</button>
+                              <button
+                                onClick={() => {
+                                  clickCategoryModel === model.name
+                                    ? setClickCategoryModel("")
+                                    : setClickCategoryModel(model.name);
+                                }}
+                              >
+                                {model.name}
+                              </button>
+                              {clickCategoryModel === model.name && (
+                                <div className=" text-start text-white">
+                                  <div className="">
+                                    <button className="flex gap-12 px-4 text-start  mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Alcohol:
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.alcohol === "No"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.alcohol}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex gap-12 px-4  text-start mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Gluten:
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.allergic.Gluten === "No"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.allergic.Gluten}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex gap-12 px-4  text-start mb-2 ">
+                                      <p className="w-20 text-gray-400">
+                                        Milk:{" "}
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.allergic.Milk === "No"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.allergic.Milk}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex gap-12 px-4  text-start mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Egg:{" "}
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.allergic.Egg === "No"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.allergic.Egg}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex gap-12 px-4  text-start mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Nuts:{" "}
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.allergic.Nuts === "No"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.allergic.Nuts}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex gap-12 px-4  text-start mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Sesame:{" "}
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.allergic.Sesame === "No"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.allergic.Sesame}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex gap-12 px-4  text-start mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Wheat:{" "}
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.allergic.Wheat === "No"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.allergic.Wheat}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex gap-12 px-4  text-start mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Fish:{" "}
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.allergic.Fish === "No"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.allergic.Fish}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex gap-12 px-4  text-start mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Halal:{" "}
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.halal === "Yes"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.halal}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex justify-between gap-12 px-4  text-start mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Vegan:{" "}
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.vegan === "Yes"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.vegan}`}</p>
+                                    </button>
+                                  </div>
+                                  <div>
+                                    <button className=" flex gap-12 px-4  text-start mb-2">
+                                      <p className="w-20 text-gray-400">
+                                        Vegetarian:{" "}
+                                      </p>
+                                      <p
+                                        className={`${
+                                          model.vegetarian === "Yes"
+                                            ? "bg-green-500"
+                                            : "bg-red-500"
+                                        } border px-2`}
+                                      >{` ${model.vegetarian}`}</p>
+                                    </button>
+                                  </div>
                                 </div>
-                                <div>
-                                  <button className="text-gray-400">{`allergic: ${model.allergic}`}</button>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        ))
-                      : ""}
+                              )}
+                            </div>
+                          ))
+                        : ""}
+                    </div>
                   </div>
-                ))}
+                </div>
+              ))}
 
-                {category.categoryName.cosmetics.map((cosmetic, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center justify-center  py-2 px-6 gap-3"
-                  >
+              {category.categoryName.cosmetics.map((cosmetic, index) => (
+                <div key={index}>
+                  <div className="flex flex-col items-center justify-center py-2 px-6 gap-3 w-[15vw]">
                     <div className="w-[15vw]">
                       <button
                         onClick={() => handleClickCosmetics(cosmetic.name)}
-                        className="text-xl text-gray-600 font-bold tracking-wide mb-6"
+                        className="text-xl text-gray-600 font-bold tracking-wider mb-6"
                       >
                         {cosmetic.name}
                       </button>
                     </div>
                     {clickCosmetics
                       ? cosmetic.models.map((model, index) => (
-                          <div key={index} className="px-4 py-1 border w-60">
+                          <div
+                            key={index}
+                            className="px-4 py-3 border w-60 categoryType text-center font-semibold"
+                          >
                             <button
                               onClick={() => {
                                 clickCategoryModel === model.name
@@ -301,12 +712,152 @@ function Categories() {
                               {model.name}
                             </button>
                             {clickCategoryModel === model.name && (
-                              <div className="pl-5">
-                                <div>
-                                  <button className="text-gray-400">{`alcohol: ${model.alcohol}`}</button>
+                              <div className=" text-start text-white">
+                                <div className="">
+                                  <button className="flex gap-12 px-4 text-start  mb-2">
+                                    <p className="w-20 text-gray-400">
+                                      Alcohol:
+                                    </p>
+                                    <p
+                                      className={`${
+                                        model.alcohol === "No"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.alcohol}`}</p>
+                                  </button>
                                 </div>
                                 <div>
-                                  <button className="text-gray-400">{`allergic: ${model.allergic}`}</button>
+                                  <button className=" flex gap-12 px-4  text-start mb-2">
+                                    <p className="w-20 text-gray-400">
+                                      Gluten:
+                                    </p>
+                                    <p
+                                      className={`${
+                                        model.allergic.Gluten === "No"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.allergic.Gluten}`}</p>
+                                  </button>
+                                </div>
+                                <div>
+                                  <button className=" flex gap-12 px-4  text-start mb-2 ">
+                                    <p className="w-20 text-gray-400">Milk: </p>
+                                    <p
+                                      className={`${
+                                        model.allergic.Milk === "No"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.allergic.Milk}`}</p>
+                                  </button>
+                                </div>
+                                <div>
+                                  <button className=" flex gap-12 px-4  text-start mb-2">
+                                    <p className="w-20 text-gray-400">Egg: </p>
+                                    <p
+                                      className={`${
+                                        model.allergic.Egg === "No"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.allergic.Egg}`}</p>
+                                  </button>
+                                </div>
+                                <div>
+                                  <button className=" flex gap-12 px-4  text-start mb-2">
+                                    <p className="w-20 text-gray-400">Nuts: </p>
+                                    <p
+                                      className={`${
+                                        model.allergic.Nuts === "No"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.allergic.Nuts}`}</p>
+                                  </button>
+                                </div>
+                                <div>
+                                  <button className=" flex gap-12 px-4  text-start mb-2">
+                                    <p className="w-20 text-gray-400">
+                                      Sesame:{" "}
+                                    </p>
+                                    <p
+                                      className={`${
+                                        model.allergic.Sesame === "No"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.allergic.Sesame}`}</p>
+                                  </button>
+                                </div>
+                                <div>
+                                  <button className=" flex gap-12 px-4  text-start mb-2">
+                                    <p className="w-20 text-gray-400">
+                                      Wheat:{" "}
+                                    </p>
+                                    <p
+                                      className={`${
+                                        model.allergic.Wheat === "No"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.allergic.Wheat}`}</p>
+                                  </button>
+                                </div>
+                                <div>
+                                  <button className=" flex gap-12 px-4  text-start mb-2">
+                                    <p className="w-20 text-gray-400">Fish: </p>
+                                    <p
+                                      className={`${
+                                        model.allergic.Fish === "No"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.allergic.Fish}`}</p>
+                                  </button>
+                                </div>
+                                <div>
+                                  <button className=" flex gap-12 px-4  text-start mb-2">
+                                    <p className="w-20 text-gray-400">
+                                      Halal:{" "}
+                                    </p>
+                                    <p
+                                      className={`${
+                                        model.halal === "Yes"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.halal}`}</p>
+                                  </button>
+                                </div>
+                                <div>
+                                  <button className=" flex justify-between gap-12 px-4  text-start mb-2">
+                                    <p className="w-20 text-gray-400">
+                                      Vegan:{" "}
+                                    </p>
+                                    <p
+                                      className={`${
+                                        model.vegan === "Yes"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.vegan}`}</p>
+                                  </button>
+                                </div>
+                                <div>
+                                  <button className=" flex gap-12 px-4  text-start mb-2">
+                                    <p className="w-20 text-gray-400">
+                                      Vegetarian:{" "}
+                                    </p>
+                                    <p
+                                      className={`${
+                                        model.vegetarian === "Yes"
+                                          ? "bg-green-500"
+                                          : "bg-red-500"
+                                      } border px-2`}
+                                    >{` ${model.vegetarian}`}</p>
+                                  </button>
                                 </div>
                               </div>
                             )}
@@ -314,14 +865,12 @@ function Categories() {
                         ))
                       : ""}
                   </div>
-                ))}
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        ""
-      )}
+                </div>
+              ))}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
