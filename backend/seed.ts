@@ -1,5 +1,4 @@
 import mongoose, { Schema, model } from "mongoose";
-import { Gluten } from "next/font/google";
 
 const categorySchema = new Schema({
   category: {
@@ -103,10 +102,10 @@ const categoryData = [
     category: {
       drink: [
         {
-          name: "PepsiCola",
+          name: "Pepsi",
           models: [
             {
-              name: "Zero",
+              name: "Pepsi Zero",
               alcohol: "No",
               allergic: {
                 Gluten: "No",
@@ -122,7 +121,7 @@ const categoryData = [
               vegetarian: "Yes",
             },
             {
-              name: "Light",
+              name: "Pepsi Light",
               alcohol: "No",
               allergic: {
                 Gluten: "No",
@@ -143,7 +142,7 @@ const categoryData = [
           name: "Fanta",
           models: [
             {
-              name: "Orange",
+              name: "Fanta Orange",
               alcohol: "No",
               allergic: {
                 Gluten: "No",
@@ -159,7 +158,7 @@ const categoryData = [
               vegetarian: "Yes",
             },
             {
-              name: "Limon",
+              name: "Fanta Limon",
               alcohol: "No",
               allergic: {
                 Gluten: "No",
@@ -203,7 +202,7 @@ const categoryData = [
           name: "Pasta",
           models: [
             {
-              name: "Bellisimo",
+              name: "Pasta Bellisimo",
               alcohol: "No",
               allergic: {
                 Gluten: "Yes",
@@ -219,7 +218,7 @@ const categoryData = [
               vegetarian: "Yes",
             },
             {
-              name: "Ankara ",
+              name: "Pasta Ankara ",
               alcohol: "No",
               allergic: {
                 Gluten: "No",
@@ -240,7 +239,7 @@ const categoryData = [
           name: "Rice",
           models: [
             {
-              name: "Mahmood",
+              name: "Rice Mahmood",
               alcohol: "No",
               allergic: {
                 Gluten: "No",
@@ -256,7 +255,7 @@ const categoryData = [
               vegetarian: "Yes",
             },
             {
-              name: "Basmati ",
+              name: "Rice Basmati ",
               alcohol: "No",
               allergic: {
                 Gluten: "No",
@@ -276,10 +275,10 @@ const categoryData = [
       ],
       medicine: [
         {
-          name: "Aspirin",
+          name: "Aspirine",
           models: [
             {
-              name: "Aspirin",
+              name: "Aspirine Upsa",
               alcohol: "No",
               allergic: {
                 Gluten: "No",
@@ -300,7 +299,7 @@ const categoryData = [
           name: "Novalgin",
           models: [
             {
-              name: "Novalgin",
+              name: "Novalgin Oblong",
               alcohol: "No",
               allergic: {
                 Gluten: "No",
@@ -320,10 +319,10 @@ const categoryData = [
       ],
       cosmetics: [
         {
-          name: "Schampoo",
+          name: "Shampoo",
           models: [
             {
-              name: "Pantine",
+              name: "Shampoo Pantene",
               alcohol: "No",
               allergic: {
                 Gluten: "No",

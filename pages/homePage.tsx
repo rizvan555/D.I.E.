@@ -113,25 +113,38 @@ function HomePage() {
   const handleSearch = () => {
     const results: string[] = categories.flatMap((category) => {
       const drinkResults = category.category.drink
-        .filter((drink) =>
-          drink.name.toLowerCase().includes(inputValue.toLowerCase())
+        .filter(
+          (drink) =>
+            drink.name.toLowerCase().includes(inputValue.toLowerCase()) ||
+            drink.models.some((model) =>
+              model.name.toLowerCase().includes(inputValue.toLowerCase())
+            )
         )
-        .map((drink) => ({
-          category: "Drink",
-          name: drink.name,
-          models: drink.models.map((drinkModel) => ({
-            name: drinkModel.name,
-            alcohol: drinkModel.alcohol,
-            allergic: drinkModel.allergic,
-            halal: drinkModel.halal,
-            vegan: drinkModel.vegan,
-            vegetarian: drinkModel.vegetarian,
-          })),
-        }));
+        .map((drink) => {
+          const filteredModels = drink.models.filter((model) =>
+            model.name.toLowerCase().includes(inputValue.toLowerCase())
+          );
+          return {
+            category: "Drink",
+            name: drink.name,
+            models: filteredModels.map((drinkModel) => ({
+              name: drinkModel.name,
+              alcohol: drinkModel.alcohol,
+              allergic: drinkModel.allergic,
+              halal: drinkModel.halal,
+              vegan: drinkModel.vegan,
+              vegetarian: drinkModel.vegetarian,
+            })),
+          };
+        });
 
       const foodResults = category.category.food
-        .filter((food) =>
-          food.name.toLowerCase().includes(inputValue.toLowerCase())
+        .filter(
+          (food) =>
+            food.name.toLowerCase().includes(inputValue.toLowerCase()) ||
+            food.models.find((model) =>
+              model.name.toLowerCase().includes(inputValue.toLowerCase())
+            )
         )
         .map((food) => ({
           category: "Food",
@@ -147,8 +160,14 @@ function HomePage() {
         }));
 
       const medicineResults = category.category.medicine
-        .filter((medicine) =>
-          medicine.name.toLowerCase().includes(inputValue.toLowerCase())
+        .filter(
+          (medicine) =>
+            medicine.name.toLowerCase().includes(inputValue.toLowerCase()) ||
+            medicine.models.find((medicineModel) =>
+              medicineModel.name
+                .toLowerCase()
+                .includes(inputValue.toLowerCase())
+            )
         )
         .map((medicine) => ({
           category: "Medicine",
@@ -164,8 +183,14 @@ function HomePage() {
         }));
 
       const cosmeticsResults = category.category.cosmetics
-        .filter((cosmetic) =>
-          cosmetic.name.toLowerCase().includes(inputValue.toLowerCase())
+        .filter(
+          (cosmetic) =>
+            cosmetic.name.toLowerCase().includes(inputValue.toLowerCase()) ||
+            cosmetic.models.find((cosmeticModel) =>
+              cosmeticModel.name
+                .toLowerCase()
+                .includes(inputValue.toLowerCase())
+            )
         )
         .map((cosmetic) => ({
           category: "Cosmetics",
