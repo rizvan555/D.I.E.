@@ -162,7 +162,7 @@ function Categories() {
                     {drink.models.map((model, index) => (
                       <div
                         key={index}
-                        className="px-4 w-60 text-center font-semibold "
+                        className="px-4 w-60 text-start font-semibold "
                       >
                         <div className="mb-4">
                           <button
