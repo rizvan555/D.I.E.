@@ -1,5 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { PiBeerBottleBold } from "react-icons/pi";
+import { LuWheat } from "react-icons/lu";
+import { GiWheat, GiMilkCarton, GiSesame } from "react-icons/gi";
+import { FaEgg } from "react-icons/fa";
+import { LuNut } from "react-icons/lu";
 interface Category {
   category: {
     drink: {
@@ -153,12 +158,12 @@ function Categories() {
               {category.category.drink.map((drink, index) => (
                 <div key={index}>
                   <div className="flex flex-col items-center justify-center py-2 px-6 gap-3 w-[15vw]">
-                    <div className="w-[15vw]">
+                    <div className="w-[15vw] text-start">
                       <button
                         onClick={() => handleClickDrink(drink.name)}
-                        className="text-2xl text-gray-600 font-bold tracking-wider mb-6 border-b"
+                        className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b "
                       >
-                        Drink
+                        DRINK
                       </button>
                     </div>
 
@@ -185,7 +190,8 @@ function Categories() {
                           <div className=" text-start text-white">
                             <div className="">
                               <button className="flex gap-12 px-4 text-start  mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <PiBeerBottleBold />
                                   Alcohol:
                                 </p>
                                 <p
@@ -199,7 +205,8 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <LuWheat />
                                   Gluten:
                                 </p>
                                 <p
@@ -213,8 +220,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2 ">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Milk:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <GiMilkCarton />
+                                  Milk:
                                 </p>
                                 <p
                                   className={`${
@@ -227,8 +235,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Egg:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <FaEgg />
+                                  Egg:
                                 </p>
                                 <p
                                   className={`${
@@ -241,8 +250,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Nuts:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <LuNut />
+                                  Nuts:
                                 </p>
                                 <p
                                   className={`${
@@ -255,8 +265,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Sesame:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <GiSesame />
+                                  Sesame:
                                 </p>
                                 <p
                                   className={`${
@@ -269,8 +280,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Wheat:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <GiWheat />
+                                  Wheat:
                                 </p>
                                 <p
                                   className={`${
@@ -348,18 +360,18 @@ function Categories() {
               {category.category.food.map((food, index) => (
                 <div key={index}>
                   <div className="flex flex-col items-center justify-center py-2 px-6 gap-3 w-[15vw]">
-                    <div className="w-[15vw]">
+                    <div className="w-[15vw] text-start">
                       <button
                         onClick={() => handleClickFood(food.name)}
-                        className="text-2xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
+                        className="text-xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
                       >
-                        Food
+                        FOODS
                       </button>
                     </div>
                     {food.models.map((model, index) => (
                       <div
                         key={index}
-                        className="px-4  w-60  text-center font-semibold "
+                        className="px-4 w-60 font-semibold text-start"
                       >
                         <button
                           onClick={() => {
@@ -367,7 +379,7 @@ function Categories() {
                               ? setClickCategoryModel("")
                               : setClickCategoryModel(model.name);
                           }}
-                          className="mb-4 hover:underline"
+                          className="mb-4 hover:underline "
                         >
                           {model.name}
                         </button>
@@ -375,7 +387,8 @@ function Categories() {
                           <div className=" text-start text-white">
                             <div className="">
                               <button className="flex gap-12 px-4 text-start  mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <PiBeerBottleBold />
                                   Alcohol:
                                 </p>
                                 <p
@@ -389,7 +402,8 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <LuWheat />
                                   Gluten:
                                 </p>
                                 <p
@@ -403,8 +417,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2 ">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Milk:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <GiMilkCarton />
+                                  Milk:
                                 </p>
                                 <p
                                   className={`${
@@ -417,8 +432,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Egg:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <FaEgg />
+                                  Egg:
                                 </p>
                                 <p
                                   className={`${
@@ -431,8 +447,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Nuts:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <LuNut />
+                                  Nuts:
                                 </p>
                                 <p
                                   className={`${
@@ -445,8 +462,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Sesame:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <GiSesame />
+                                  Sesame:
                                 </p>
                                 <p
                                   className={`${
@@ -459,8 +477,9 @@ function Categories() {
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Wheat:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <GiWheat />
+                                  Wheat:
                                 </p>
                                 <p
                                   className={`${
@@ -539,18 +558,18 @@ function Categories() {
                 <div key={index}>
                   <div>
                     <div className="flex flex-col items-center justify-center  py-2 px-6 gap-3 w-[15vw]">
-                      <div className="w-[15vw]">
+                      <div className="w-[15vw] text-start">
                         <button
                           onClick={() => handleClickMedicine(medi.name)}
-                          className="text-2xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
+                          className="text-xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b "
                         >
-                          Medicine
+                          MEDICINE
                         </button>
                       </div>
                       {medi.models.map((model, index) => (
                         <div
                           key={index}
-                          className="px-4 w-60  text-center font-semibold"
+                          className="px-4 w-60  font-semibold text-start"
                         >
                           <button
                             onClick={() => {
@@ -566,7 +585,8 @@ function Categories() {
                             <div className=" text-start text-white ">
                               <div className="">
                                 <button className="flex gap-12 px-4 text-start  mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal ">
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <PiBeerBottleBold />
                                     Alcohol:
                                   </p>
                                   <p
@@ -580,7 +600,8 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <LuWheat />
                                     Gluten:
                                   </p>
                                   <p
@@ -594,8 +615,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2 ">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Milk:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <GiMilkCarton />
+                                    Milk:
                                   </p>
                                   <p
                                     className={`${
@@ -608,8 +630,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Egg:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <FaEgg />
+                                    Egg:
                                   </p>
                                   <p
                                     className={`${
@@ -622,8 +645,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Nuts:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <LuNut />
+                                    Nuts:
                                   </p>
                                   <p
                                     className={`${
@@ -636,8 +660,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Sesame:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <GiSesame />
+                                    Sesame:
                                   </p>
                                   <p
                                     className={`${
@@ -650,8 +675,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Wheat:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <GiWheat />
+                                    Wheat:
                                   </p>
                                   <p
                                     className={`${
@@ -731,18 +757,18 @@ function Categories() {
                 <div key={index}>
                   <div>
                     <div className="flex flex-col items-center justify-center  py-2 px-6 gap-3 w-[15vw]">
-                      <div className="w-[15vw]">
+                      <div className="w-[15vw] text-start">
                         <button
                           onClick={() => handleClickCosmetics(cosmetic.name)}
-                          className="text-2xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
+                          className="text-xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
                         >
-                          Cosmetics
+                          COSMETICS
                         </button>
                       </div>
                       {cosmetic.models.map((model, index) => (
                         <div
                           key={index}
-                          className="px-4 w-60  text-center font-semibold"
+                          className="px-4 w-60  font-semibold text-start"
                         >
                           <button
                             onClick={() => {
@@ -758,7 +784,8 @@ function Categories() {
                             <div className=" text-start text-white ">
                               <div className="">
                                 <button className="flex gap-12 px-4 text-start  mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal ">
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <PiBeerBottleBold />
                                     Alcohol:
                                   </p>
                                   <p
@@ -772,7 +799,8 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <LuWheat />
                                     Gluten:
                                   </p>
                                   <p
@@ -786,8 +814,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2 ">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Milk:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <GiMilkCarton />
+                                    Milk:
                                   </p>
                                   <p
                                     className={`${
@@ -800,8 +829,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Egg:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <FaEgg />
+                                    Egg:
                                   </p>
                                   <p
                                     className={`${
@@ -814,8 +844,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Nuts:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <LuNut />
+                                    Nuts:
                                   </p>
                                   <p
                                     className={`${
@@ -828,8 +859,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Sesame:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <GiSesame />
+                                    Sesame:
                                   </p>
                                   <p
                                     className={`${
@@ -842,8 +874,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Wheat:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <GiWheat />
+                                    Wheat:
                                   </p>
                                   <p
                                     className={`${
