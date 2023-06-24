@@ -113,12 +113,10 @@ function HomePage() {
   const handleSearch = () => {
     const results: string[] = categories.flatMap((category) => {
       const drinkResults = category.category.drink
-        .filter(
-          (drink) =>
-            drink.name.toLowerCase().includes(inputValue.toLowerCase()) ||
-            drink.models.some((model) =>
-              model.name.toLowerCase().includes(inputValue.toLowerCase())
-            )
+        .filter((drink) =>
+          drink.models.some((model) =>
+            model.name.toLowerCase().includes(inputValue.toLowerCase())
+          )
         )
         .map((drink) => {
           const filteredModels = drink.models.filter((model) =>
@@ -139,48 +137,52 @@ function HomePage() {
         });
 
       const foodResults = category.category.food
-        .filter(
-          (food) =>
-            food.name.toLowerCase().includes(inputValue.toLowerCase()) ||
-            food.models.find((model) =>
-              model.name.toLowerCase().includes(inputValue.toLowerCase())
-            )
+        .filter((food) =>
+          food.models.some((model) =>
+            model.name.toLowerCase().includes(inputValue.toLowerCase())
+          )
         )
-        .map((food) => ({
-          category: "Food",
-          name: food.name,
-          models: food.models.map((foodModel) => ({
-            name: foodModel.name,
-            alcohol: foodModel.alcohol,
-            allergic: foodModel.allergic,
-            halal: foodModel.halal,
-            vegan: foodModel.vegan,
-            vegetarian: foodModel.vegetarian,
-          })),
-        }));
+        .map((food) => {
+          const filteredModels = food.models.filter((model) =>
+            model.name.toLowerCase().includes(inputValue.toLowerCase())
+          );
+          return {
+            category: "Food",
+            name: food.name,
+            models: filteredModels.map((foodModel) => ({
+              name: foodModel.name,
+              alcohol: foodModel.alcohol,
+              allergic: foodModel.allergic,
+              halal: foodModel.halal,
+              vegan: foodModel.vegan,
+              vegetarian: foodModel.vegetarian,
+            })),
+          };
+        });
 
       const medicineResults = category.category.medicine
-        .filter(
-          (medicine) =>
-            medicine.name.toLowerCase().includes(inputValue.toLowerCase()) ||
-            medicine.models.find((medicineModel) =>
-              medicineModel.name
-                .toLowerCase()
-                .includes(inputValue.toLowerCase())
-            )
+        .filter((medicine) =>
+          medicine.models.find((medicineModel) =>
+            medicineModel.name.toLowerCase().includes(inputValue.toLowerCase())
+          )
         )
-        .map((medicine) => ({
-          category: "Medicine",
-          name: medicine.name,
-          models: medicine.models.map((medicineModel) => ({
-            name: medicineModel.name,
-            alcohol: medicineModel.alcohol,
-            allergic: medicineModel.allergic,
-            halal: medicineModel.halal,
-            vegan: medicineModel.vegan,
-            vegetarian: medicineModel.vegetarian,
-          })),
-        }));
+        .map((medicine) => {
+          const filteredModels = medicine.models.filter((model) =>
+            model.name.toLowerCase().includes(inputValue.toLowerCase())
+          );
+          return {
+            category: "Medicine",
+            name: medicine.name,
+            models: filteredModels.map((medicinModel) => ({
+              name: medicinModel.name,
+              alcohol: medicinModel.alcohol,
+              allergic: medicinModel.allergic,
+              halal: medicinModel.halal,
+              vegan: medicinModel.vegan,
+              vegetarian: medicinModel.vegetarian,
+            })),
+          };
+        });
 
       const cosmeticsResults = category.category.cosmetics
         .filter(
@@ -192,18 +194,23 @@ function HomePage() {
                 .includes(inputValue.toLowerCase())
             )
         )
-        .map((cosmetic) => ({
-          category: "Cosmetics",
-          name: cosmetic.name,
-          models: cosmetic.models.map((cosmeticModel) => ({
-            name: cosmeticModel.name,
-            alcohol: cosmeticModel.alcohol,
-            allergic: cosmeticModel.allergic,
-            halal: cosmeticModel.halal,
-            vegan: cosmeticModel.vegan,
-            vegetarian: cosmeticModel.vegetarian,
-          })),
-        }));
+        .map((cosmetic) => {
+          const filteredModels = cosmetic.models.filter((model) =>
+            model.name.toLowerCase().includes(inputValue.toLowerCase())
+          );
+          return {
+            category: "Medicine",
+            name: cosmetic.name,
+            models: filteredModels.map((cosmeticModel) => ({
+              name: cosmeticModel.name,
+              alcohol: cosmeticModel.alcohol,
+              allergic: cosmeticModel.allergic,
+              halal: cosmeticModel.halal,
+              vegan: cosmeticModel.vegan,
+              vegetarian: cosmeticModel.vegetarian,
+            })),
+          };
+        });
 
       return [
         ...drinkResults,

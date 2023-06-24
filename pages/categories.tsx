@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 interface Category {
-  categoryName: {
+  category: {
     drink: {
       name: string;
       models: [
@@ -102,7 +102,7 @@ function Categories() {
     const getCategory = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3001/categories/categorypages"
+          "http://localhost:3001/categories/category"
         );
         console.log(response.data);
         setCategories(response.data);
@@ -150,7 +150,7 @@ function Categories() {
         {categories.map((category, index) => {
           return (
             <div key={index} className="flex justify-center gap-24">
-              {category.categoryName.drink.map((drink, index) => (
+              {category.category.drink.map((drink, index) => (
                 <div key={index}>
                   <div className="flex flex-col items-center justify-center py-2 px-6 gap-3 w-[15vw]">
                     <div className="w-[15vw]">
@@ -158,7 +158,7 @@ function Categories() {
                         onClick={() => handleClickDrink(drink.name)}
                         className="text-2xl text-gray-600 font-bold tracking-wider mb-6 border-b"
                       >
-                        {drink.name}
+                        Drink
                       </button>
                     </div>
 
@@ -345,7 +345,7 @@ function Categories() {
                 </div>
               ))}
 
-              {category.categoryName.food.map((food, index) => (
+              {category.category.food.map((food, index) => (
                 <div key={index}>
                   <div className="flex flex-col items-center justify-center py-2 px-6 gap-3 w-[15vw]">
                     <div className="w-[15vw]">
@@ -353,7 +353,7 @@ function Categories() {
                         onClick={() => handleClickFood(food.name)}
                         className="text-2xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
                       >
-                        {food.name}
+                        Food
                       </button>
                     </div>
                     {food.models.map((model, index) => (
@@ -535,7 +535,7 @@ function Categories() {
                 </div>
               ))}
 
-              {category.categoryName.medicine.map((medi, index) => (
+              {category.category.medicine.map((medi, index) => (
                 <div key={index}>
                   <div>
                     <div className="flex flex-col items-center justify-center  py-2 px-6 gap-3 w-[15vw]">
@@ -544,7 +544,7 @@ function Categories() {
                           onClick={() => handleClickMedicine(medi.name)}
                           className="text-2xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
                         >
-                          {medi.name}
+                          Medicine
                         </button>
                       </div>
                       {medi.models.map((model, index) => (
@@ -727,7 +727,7 @@ function Categories() {
                 </div>
               ))}
 
-              {category.categoryName.cosmetics.map((cosmetic, index) => (
+              {category.category.cosmetics.map((cosmetic, index) => (
                 <div key={index}>
                   <div>
                     <div className="flex flex-col items-center justify-center  py-2 px-6 gap-3 w-[15vw]">
@@ -736,7 +736,7 @@ function Categories() {
                           onClick={() => handleClickCosmetics(cosmetic.name)}
                           className="text-2xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
                         >
-                          {cosmetic.name}
+                          Cosmetics
                         </button>
                       </div>
                       {cosmetic.models.map((model, index) => (
