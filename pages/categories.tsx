@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { PiBeerBottleBold } from "react-icons/pi";
 import { LuWheat } from "react-icons/lu";
 import { GiWheat, GiMilkCarton, GiSesame } from "react-icons/gi";
-import { FaEgg } from "react-icons/fa";
-import { LuNut } from "react-icons/lu";
+import { FaEgg, FaFish } from "react-icons/fa";
+import { LuNut, LuVegan } from "react-icons/lu";
+import Image from "next/image";
+import halal from "../public/images/halal.png";
 interface Category {
   category: {
     drink: {
@@ -157,8 +159,8 @@ function Categories() {
             <div key={index} className="flex justify-center gap-24">
               {category.category.drink.map((drink, index) => (
                 <div key={index}>
-                  <div className="flex flex-col items-center justify-center py-2 px-6 gap-3 w-[15vw]">
-                    <div className="w-[15vw] text-start">
+                  <div className="flex flex-col items-center justify-center py-2 gap-3 w-[15vw]">
+                    <div className="">
                       <button
                         onClick={() => handleClickDrink(drink.name)}
                         className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b "
@@ -168,10 +170,7 @@ function Categories() {
                     </div>
 
                     {drink.models.map((model, index) => (
-                      <div
-                        key={index}
-                        className="px-4 w-60 text-start font-semibold "
-                      >
+                      <div key={index} className="px-4 font-semibold ">
                         <div className="mb-4">
                           <button
                             onClick={() => {
@@ -187,10 +186,10 @@ function Categories() {
                           </button>
                         </div>
                         {clickCategoryModel === model.name && (
-                          <div className=" text-start text-white">
+                          <div className=" ">
                             <div className="">
-                              <button className="flex gap-12 px-4 text-start  mb-2">
-                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                              <button className="flex gap-12 mb-2 ">
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal ">
                                   <PiBeerBottleBold />
                                   Alcohol:
                                 </p>
@@ -199,12 +198,12 @@ function Categories() {
                                     model.alcohol === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2 `}
+                                  }`}
                                 >{` ${model.alcohol}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12   text-start mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <LuWheat />
                                   Gluten:
@@ -214,12 +213,12 @@ function Categories() {
                                     model.allergic.Gluten === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Gluten}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2 ">
+                              <button className=" flex gap-12   text-start mb-2 ">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <GiMilkCarton />
                                   Milk:
@@ -229,12 +228,12 @@ function Categories() {
                                     model.allergic.Milk === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Milk}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12   text-start mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <FaEgg />
                                   Egg:
@@ -244,12 +243,12 @@ function Categories() {
                                     model.allergic.Egg === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Egg}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12   text-start mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <LuNut />
                                   Nuts:
@@ -259,12 +258,12 @@ function Categories() {
                                     model.allergic.Nuts === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Nuts}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12   text-start mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <GiSesame />
                                   Sesame:
@@ -274,12 +273,12 @@ function Categories() {
                                     model.allergic.Sesame === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Sesame}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12   text-start mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <GiWheat />
                                   Wheat:
@@ -289,63 +288,72 @@ function Categories() {
                                     model.allergic.Wheat === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Wheat}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Fish:{" "}
+                              <button className=" flex gap-12   text-start mb-2">
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <FaFish />
+                                  Fish:
                                 </p>
                                 <p
                                   className={`${
                                     model.allergic.Fish === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Fish}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Halal:{" "}
+                              <button className=" flex gap-12   text-start mb-2">
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <Image
+                                    src={halal}
+                                    alt="halalImage"
+                                    width={20}
+                                    height={20}
+                                  />
+                                  Halal:
                                 </p>
                                 <p
                                   className={`${
                                     model.halal === "Yes"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.halal}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex justify-between gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Vegan:{" "}
+                              <button className=" flex justify-between gap-12   text-start mb-2">
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <LuVegan />
+                                  Vegan:
                                 </p>
                                 <p
                                   className={`${
                                     model.vegan === "Yes"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.vegan}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Vegetarian:{" "}
+                              <button className=" flex gap-6   text-start mb-2">
+                                <p className="flex items-center gap-2 w-25 text-gray-600 hover:underline font-normal">
+                                  <LuVegan />
+                                  Vegetarian:
                                 </p>
                                 <p
                                   className={`${
                                     model.vegetarian === "Yes"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.vegetarian}`}</p>
                               </button>
                             </div>
@@ -360,33 +368,30 @@ function Categories() {
               {category.category.food.map((food, index) => (
                 <div key={index}>
                   <div className="flex flex-col items-center justify-center py-2 px-6 gap-3 w-[15vw]">
-                    <div className="w-[15vw] text-start">
+                    <div className="">
                       <button
                         onClick={() => handleClickFood(food.name)}
-                        className="text-xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
+                        className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b"
                       >
                         FOODS
                       </button>
                     </div>
                     {food.models.map((model, index) => (
-                      <div
-                        key={index}
-                        className="px-4 w-60 font-semibold text-start"
-                      >
+                      <div key={index} className="px-4 font-semibold">
                         <button
                           onClick={() => {
                             clickCategoryModel === model.name
                               ? setClickCategoryModel("")
                               : setClickCategoryModel(model.name);
                           }}
-                          className="mb-4 hover:underline "
+                          className="mb-4 hover:underline"
                         >
                           {model.name}
                         </button>
                         {clickCategoryModel === model.name && (
-                          <div className=" text-start text-white">
+                          <div className="">
                             <div className="">
-                              <button className="flex gap-12 px-4 text-start  mb-2">
+                              <button className="flex gap-12 px-4  mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <PiBeerBottleBold />
                                   Alcohol:
@@ -396,12 +401,12 @@ function Categories() {
                                     model.alcohol === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.alcohol}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12 px-4 mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <LuWheat />
                                   Gluten:
@@ -411,12 +416,12 @@ function Categories() {
                                     model.allergic.Gluten === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Gluten}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2 ">
+                              <button className=" flex gap-12 px-4 mb-2 ">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <GiMilkCarton />
                                   Milk:
@@ -426,12 +431,12 @@ function Categories() {
                                     model.allergic.Milk === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Milk}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12 px-4 mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <FaEgg />
                                   Egg:
@@ -441,12 +446,12 @@ function Categories() {
                                     model.allergic.Egg === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Egg}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12 px-4 mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <LuNut />
                                   Nuts:
@@ -456,12 +461,12 @@ function Categories() {
                                     model.allergic.Nuts === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Nuts}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12 px-4 mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <GiSesame />
                                   Sesame:
@@ -471,12 +476,12 @@ function Categories() {
                                     model.allergic.Sesame === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Sesame}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
+                              <button className=" flex gap-12 px-4 mb-2">
                                 <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                   <GiWheat />
                                   Wheat:
@@ -486,63 +491,72 @@ function Categories() {
                                     model.allergic.Wheat === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Wheat}`}</p>
                               </button>
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Fish:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <FaFish />
+                                  Fish:
                                 </p>
                                 <p
                                   className={`${
                                     model.allergic.Fish === "No"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.allergic.Fish}`}</p>
                               </button>
                             </div>
                             <div>
                               <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Halal:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <Image
+                                    src={halal}
+                                    alt="halalImage"
+                                    width={20}
+                                    height={20}
+                                  />
+                                  Halal:
                                 </p>
                                 <p
                                   className={`${
                                     model.halal === "Yes"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.halal}`}</p>
                               </button>
                             </div>
                             <div>
                               <button className=" flex justify-between gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Vegan:{" "}
+                                <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                  <LuVegan />
+                                  Vegan:
                                 </p>
                                 <p
                                   className={`${
                                     model.vegan === "Yes"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.vegan}`}</p>
                               </button>
                             </div>
                             <div>
-                              <button className=" flex gap-12 px-4  text-start mb-2">
-                                <p className="w-20 text-gray-600 hover:underline font-normal">
-                                  Vegetarian:{" "}
+                              <button className=" flex gap-6 px-4  text-start mb-2">
+                                <p className="flex items-center gap-2 w-25 text-gray-600 hover:underline font-normal">
+                                  <LuVegan />
+                                  Vegetarian:
                                 </p>
                                 <p
                                   className={`${
                                     model.vegetarian === "Yes"
                                       ? "text-green-500"
                                       : "text-red-500"
-                                  }  px-2`}
+                                  }`}
                                 >{` ${model.vegetarian}`}</p>
                               </button>
                             </div>
@@ -558,19 +572,16 @@ function Categories() {
                 <div key={index}>
                   <div>
                     <div className="flex flex-col items-center justify-center  py-2 px-6 gap-3 w-[15vw]">
-                      <div className="w-[15vw] text-start">
+                      <div className="">
                         <button
                           onClick={() => handleClickMedicine(medi.name)}
-                          className="text-xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b "
+                          className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b "
                         >
                           MEDICINE
                         </button>
                       </div>
                       {medi.models.map((model, index) => (
-                        <div
-                          key={index}
-                          className="px-4 w-60  font-semibold text-start"
-                        >
+                        <div key={index} className="px-4 font-semibold">
                           <button
                             onClick={() => {
                               clickCategoryModel === model.name
@@ -582,9 +593,9 @@ function Categories() {
                             {model.name}
                           </button>
                           {clickCategoryModel === model.name && (
-                            <div className=" text-start text-white ">
+                            <div className="">
                               <div className="">
-                                <button className="flex gap-12 px-4 text-start  mb-2">
+                                <button className="flex gap-12 px-4 mb-2">
                                   <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                     <PiBeerBottleBold />
                                     Alcohol:
@@ -599,7 +610,7 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                <button className=" flex gap-12 px-4 mb-2">
                                   <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                     <LuWheat />
                                     Gluten:
@@ -614,7 +625,7 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2 ">
+                                <button className=" flex gap-12 px-4 mb-2 ">
                                   <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                     <GiMilkCarton />
                                     Milk:
@@ -629,7 +640,7 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                <button className=" flex gap-12 px-4 mb-2">
                                   <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                     <FaEgg />
                                     Egg:
@@ -644,7 +655,7 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                <button className=" flex gap-12 px-4 mb-2">
                                   <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                     <LuNut />
                                     Nuts:
@@ -659,7 +670,7 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                <button className=" flex gap-12 px-4 mb-2">
                                   <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                     <GiSesame />
                                     Sesame:
@@ -674,7 +685,7 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2">
+                                <button className=" flex gap-12 px-4 mb-2">
                                   <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
                                     <GiWheat />
                                     Wheat:
@@ -689,9 +700,10 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Fish:{" "}
+                                <button className=" flex gap-12 px-4 mb-2">
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <FaFish />
+                                    Fish:
                                   </p>
                                   <p
                                     className={`${
@@ -703,9 +715,15 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Halal:{" "}
+                                <button className=" flex gap-12 px-4 mb-2">
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <Image
+                                      src={halal}
+                                      alt="halalImage"
+                                      width={20}
+                                      height={20}
+                                    />
+                                    Halal:
                                   </p>
                                   <p
                                     className={`${
@@ -717,9 +735,10 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex justify-between gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Vegan:{" "}
+                                <button className=" flex justify-between gap-12 px-4 mb-2">
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <LuVegan />
+                                    Vegan:
                                   </p>
                                   <p
                                     className={`${
@@ -731,9 +750,10 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Vegetarian:{" "}
+                                <button className=" flex gap-6 px-4 mb-2">
+                                  <p className="flex items-center gap-2 w-25 text-gray-600 hover:underline font-normal">
+                                    <LuVegan />
+                                    Vegetarian:
                                   </p>
                                   <p
                                     className={`${
@@ -756,11 +776,11 @@ function Categories() {
               {category.category.cosmetics.map((cosmetic, index) => (
                 <div key={index}>
                   <div>
-                    <div className="flex flex-col items-center justify-center  py-2 px-6 gap-3 w-[15vw]">
-                      <div className="w-[15vw] text-start">
+                    <div className="flex flex-col items-center justify-center py-2 gap-3 w-[15vw]">
+                      <div className="">
                         <button
                           onClick={() => handleClickCosmetics(cosmetic.name)}
-                          className="text-xl text-gray-600 hover:underline font-bold tracking-wider mb-6 border-b"
+                          className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b"
                         >
                           COSMETICS
                         </button>
@@ -768,7 +788,7 @@ function Categories() {
                       {cosmetic.models.map((model, index) => (
                         <div
                           key={index}
-                          className="px-4 w-60  font-semibold text-start"
+                          className="px-4 font-semibold"
                         >
                           <button
                             onClick={() => {
@@ -889,8 +909,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Fish:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <FaFish />
+                                    Fish:
                                   </p>
                                   <p
                                     className={`${
@@ -903,8 +924,14 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Halal:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <Image
+                                      src={halal}
+                                      alt="halalImage"
+                                      width={20}
+                                      height={20}
+                                    />
+                                    Halal:
                                   </p>
                                   <p
                                     className={`${
@@ -917,8 +944,9 @@ function Categories() {
                               </div>
                               <div>
                                 <button className=" flex justify-between gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Vegan:{" "}
+                                  <p className="flex items-center gap-2 w-20 text-gray-600 hover:underline font-normal">
+                                    <LuVegan />
+                                    Vegan:
                                   </p>
                                   <p
                                     className={`${
@@ -930,9 +958,10 @@ function Categories() {
                                 </button>
                               </div>
                               <div>
-                                <button className=" flex gap-12 px-4  text-start mb-2">
-                                  <p className="w-20 text-gray-600 hover:underline font-normal">
-                                    Vegetarian:{" "}
+                                <button className=" flex gap-6 px-4  text-start mb-2">
+                                  <p className="flex items-center gap-2 w-25 text-gray-600 hover:underline font-normal">
+                                    <LuVegan />
+                                    Vegetarian:
                                   </p>
                                   <p
                                     className={`${
