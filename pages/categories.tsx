@@ -139,7 +139,7 @@ function Categories() {
   };
 
   return (
-    <div className="text-center my-6 h-[100vh]">
+    <div className="text-center my-6">
       <button
         onClick={() => setHandleCategory(!handleCategory)}
         className="text-5xl font-bold mb-12 tracking-wider"
