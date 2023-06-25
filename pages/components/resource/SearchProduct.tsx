@@ -124,7 +124,7 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
     getCategory();
   }, []);
 
-  const getFilteredDrink = (modelName: string) => {
+  const getFiltered = (modelName: string) => {
     const filteredItems: any[] = [];
     categories.forEach((category: any) => {
       category.category.drink.forEach((drink: any) => {
@@ -135,6 +135,42 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
           filteredModels &&
             filteredItems.push({
               category: drink.name,
+              models: filteredModels,
+            });
+        }
+      });
+      category.category.food.forEach((food: any) => {
+        const filteredModels = food.models.filter(
+          (foodModel: any) => foodModel.name === modelName
+        );
+        {
+          filteredModels &&
+            filteredItems.push({
+              category: food.name,
+              models: filteredModels,
+            });
+        }
+      });
+      category.category.medicine.forEach((medicine: any) => {
+        const filteredModels = medicine.models.filter(
+          (medicineModel: any) => medicineModel.name === modelName
+        );
+        {
+          filteredModels &&
+            filteredItems.push({
+              category: medicine.name,
+              models: filteredModels,
+            });
+        }
+      });
+      category.category.cosmetics.forEach((cosmetic: any) => {
+        const filteredModels = cosmetic.models.filter(
+          (cosmeticModel: any) => cosmeticModel.name === modelName
+        );
+        {
+          filteredModels &&
+            filteredItems.push({
+              category: cosmetic.name,
               models: filteredModels,
             });
         }
@@ -181,7 +217,7 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
                 {result.models.map((model: any, index: number) => (
                   <div key={index}>
                     <button
-                      onClick={() => getFilteredDrink(model.name)}
+                      onClick={() => getFiltered(model.name)}
                       key={index}
                       className="flex flex-col gap-4 py-4 px-4 border model-box"
                     >
