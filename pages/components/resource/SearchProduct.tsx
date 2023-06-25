@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
+import ProductItem from "../../productItem";
 
 interface myResult {
   result: string;
@@ -9,9 +11,99 @@ interface SearchResult {
   name: string;
   models: { name: string; alcohol: string; allergic: string; halal: string }[];
 }
+interface Category {
+  category: {
+    drink: {
+      name: string;
+      models: [
+        {
+          name: string;
+          alcohol: string;
+          allergic: {
+            Gluten: string;
+            Milk: string;
+            Egg: string;
+            Nuts: string;
+            Sesame: string;
+            Wheat: string;
+            Fish: string;
+          };
+          halal: string;
+          vegan: string;
+          vegetarian: string;
+        }
+      ];
+    }[];
+    food: {
+      name: string;
+      models: [
+        {
+          name: string;
+          alcohol: string;
+          allergic: {
+            Gluten: string;
+            Milk: string;
+            Egg: string;
+            Nuts: string;
+            Sesame: string;
+            Wheat: string;
+            Fish: string;
+          };
+          halal: string;
+          vegan: string;
+          vegetarian: string;
+        }
+      ];
+    }[];
+    medicine: {
+      name: string;
+      models: [
+        {
+          name: string;
+          alcohol: string;
+          allergic: {
+            Gluten: string;
+            Milk: string;
+            Egg: string;
+            Nuts: string;
+            Sesame: string;
+            Wheat: string;
+            Fish: string;
+          };
+          halal: string;
+          vegan: string;
+          vegetarian: string;
+        }
+      ];
+    }[];
+    cosmetics: {
+      name: string;
+      models: [
+        {
+          name: string;
+          alcohol: string;
+          allergic: {
+            Gluten: string;
+            Milk: string;
+            Egg: string;
+            Nuts: string;
+            Sesame: string;
+            Wheat: string;
+            Fish: string;
+          };
+          halal: string;
+          vegan: string;
+          vegetarian: string;
+        }
+      ];
+    }[];
+  };
+}
 
 function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
   const [inputValue, setInputValue] = useState<string>("");
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [filteredItems, setFilteredItems] = useState<any[]>([]);
 
   const onSearchClick = () => {
     handleSearch();
@@ -21,6 +113,35 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
     if (event.key === "Enter") {
       handleSearch();
     }
+  };
+  useEffect(() => {
+    const getCategory = async () => {
+      const response = await axios.get(
+        "http://localhost:3001/categories/category"
+      );
+      setCategories(response.data);
+    };
+    getCategory();
+  }, []);
+
+  const getFilteredDrink = (modelName: string) => {
+    const filteredItems: any[] = [];
+    categories.forEach((category: any) => {
+      category.category.drink.forEach((drink: any) => {
+        const filteredModels = drink.models.filter(
+          (drinkModel: any) => drinkModel.name === modelName
+        );
+        {
+          filteredModels &&
+            filteredItems.push({
+              category: drink.name,
+              models: filteredModels,
+            });
+        }
+      });
+    });
+    console.log(filteredItems);
+    setFilteredItems(filteredItems);
   };
 
   return (
@@ -58,138 +179,144 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
               </h1>
               <div className="flex gap-4 py-4">
                 {result.models.map((model: any, index: number) => (
-                  <ul
-                    key={index}
-                    className="flex flex-col gap-4 py-4 px-4 border model-box"
-                  >
-                    <li className="font-bold text-primary">{model.name}</li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]">Alcohol:</h4>
-                      <p
-                        className={`${
-                          model.alcohol === "Yes"
-                            ? "bg-red-500"
-                            : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.alcohol}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]">Gluten:</h4>
-                      <p
-                        className={`${
-                          model.allergic.Gluten === "Yes"
-                            ? "bg-red-500"
-                            : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.allergic.Gluten}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]"> Milk:</h4>
-                      <p
-                        className={`${
-                          model.allergic.Milk === "Yes"
-                            ? "bg-red-500"
-                            : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.allergic.Milk}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]"> Egg:</h4>
-                      <p
-                        className={`${
-                          model.allergic.Egg === "Yes"
-                            ? "bg-red-500"
-                            : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.allergic.Egg}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]"> Nuts:</h4>
-                      <p
-                        className={`${
-                          model.allergic.Nuts === "Yes"
-                            ? "bg-red-500"
-                            : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.allergic.Nuts}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]"> Sesame:</h4>
-                      <p
-                        className={`${
-                          model.allergic.Sesame === "Yes"
-                            ? "bg-red-500"
-                            : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.allergic.Sesame}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]"> Wheat:</h4>
-                      <p
-                        className={`${
-                          model.allergic.Wheat === "Yes"
-                            ? "bg-red-500"
-                            : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.allergic.Wheat}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]"> Nuts:</h4>
-                      <p
-                        className={`${
-                          model.allergic.Nuts === "Yes"
-                            ? "bg-red-500"
-                            : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.allergic.Nuts}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]"> Halal:</h4>
-                      <p
-                        className={`${
-                          model.halal === "No" ? "bg-red-600" : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.halal}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]"> Vegan:</h4>
-                      <p
-                        className={`${
-                          model.halal === "No" ? "bg-red-600" : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.vegan}
-                      </p>
-                    </li>
-                    <li className="flex items-center gap-4 font-semibold text-gray-600 text-start">
-                      <h4 className="text-gray-600 w-[7vw]"> Vegetarian:</h4>
-                      <p
-                        className={`${
-                          model.halal === "No" ? "bg-red-600" : "bg-green-500"
-                        } border px-2 text-white text-[14px]`}
-                      >
-                        {model.vegetarian}
-                      </p>
-                    </li>
-                  </ul>
+                  <div key={index}>
+                    <button
+                      onClick={() => getFilteredDrink(model.name)}
+                      key={index}
+                      className="flex flex-col gap-4 py-4 px-4 border model-box"
+                    >
+                      <div className="font-bold text-primary">{model.name}</div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]">Alcohol:</h4>
+                        <p
+                          className={`${
+                            model.alcohol === "Yes"
+                              ? "bg-red-500"
+                              : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.alcohol}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]">Gluten:</h4>
+                        <p
+                          className={`${
+                            model.allergic.Gluten === "Yes"
+                              ? "bg-red-500"
+                              : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.allergic.Gluten}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]"> Milk:</h4>
+                        <p
+                          className={`${
+                            model.allergic.Milk === "Yes"
+                              ? "bg-red-500"
+                              : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.allergic.Milk}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]"> Egg:</h4>
+                        <p
+                          className={`${
+                            model.allergic.Egg === "Yes"
+                              ? "bg-red-500"
+                              : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.allergic.Egg}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]"> Nuts:</h4>
+                        <p
+                          className={`${
+                            model.allergic.Nuts === "Yes"
+                              ? "bg-red-500"
+                              : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.allergic.Nuts}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]"> Sesame:</h4>
+                        <p
+                          className={`${
+                            model.allergic.Sesame === "Yes"
+                              ? "bg-red-500"
+                              : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.allergic.Sesame}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]"> Wheat:</h4>
+                        <p
+                          className={`${
+                            model.allergic.Wheat === "Yes"
+                              ? "bg-red-500"
+                              : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.allergic.Wheat}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]"> Nuts:</h4>
+                        <p
+                          className={`${
+                            model.allergic.Nuts === "Yes"
+                              ? "bg-red-500"
+                              : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.allergic.Nuts}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]"> Halal:</h4>
+                        <p
+                          className={`${
+                            model.halal === "No" ? "bg-red-600" : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.halal}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]"> Vegan:</h4>
+                        <p
+                          className={`${
+                            model.halal === "No" ? "bg-red-600" : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.vegan}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
+                        <h4 className="text-gray-600 w-[7vw]"> Vegetarian:</h4>
+                        <p
+                          className={`${
+                            model.halal === "No" ? "bg-red-600" : "bg-green-500"
+                          } border px-2 text-white text-[14px]`}
+                        >
+                          {model.vegetarian}
+                        </p>
+                      </div>
+                    </button>
+                    <div>
+                      <ProductItem filteredItems={filteredItems} />
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
