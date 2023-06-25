@@ -184,12 +184,12 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
   return (
     <div className="flex flex-col">
       {showButton && (
-        <div className="flex items-center justify-center  gap-4">
-          <div className="flex items-center gap-2 border-b mb-8 text-xl ">
+        <div className="flex items-center justify-center gap-4 mb-16">
+          <div className="flex items-center gap-2 border-b text-xl ">
             <BiSearchAlt size={30} />
             <input
               type="text"
-              className="w-[50vw] p-4 focus:outline-0 "
+              className="w-[50vw] py-2 px-3 focus:outline-0 "
               placeholder="Search"
               value={inputValue}
               onChange={(event) => {
@@ -199,7 +199,7 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
               onKeyDown={onKeyPress}
             />
           </div>
-          <div className="mb-4">
+          <div className="">
             <button
               className="border px-4 py-2 bg-primary text-white text-xl tracking-wider font-bold active:scale-90 active:font-normal transition-all"
               onClick={onSearchClick}
@@ -212,9 +212,7 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
 
       {inputValue && (
         <div className="text-center px-2 w-full">
-          {showButton && (
-            <h1 className="text-3xl font-bold mb-6">Search Product</h1>
-          )}
+          {showButton && <h1 className="text-3xl font-bold">Search Product</h1>}
           {searchResults.map((result: any, index: number) => (
             <div key={index}>
               {showButton && (
