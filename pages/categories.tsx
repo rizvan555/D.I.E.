@@ -163,14 +163,17 @@ function Categories() {
                     <div className="">
                       <button
                         onClick={() => handleClickDrink(drink.name)}
-                        className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b "
+                        className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b border-t w-[10vw]"
                       >
                         DRINK
                       </button>
                     </div>
 
                     {drink.models.map((model, index) => (
-                      <div key={index} className="px-4 font-semibold ">
+                      <div
+                        key={index}
+                        className="px-4 font-semibold text-[14px]"
+                      >
                         <div className="mb-4">
                           <button
                             onClick={() => {
@@ -371,13 +374,16 @@ function Categories() {
                     <div className="">
                       <button
                         onClick={() => handleClickFood(food.name)}
-                        className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b"
+                        className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b border-t w-[10vw]"
                       >
                         FOODS
                       </button>
                     </div>
                     {food.models.map((model, index) => (
-                      <div key={index} className="px-4 font-semibold">
+                      <div
+                        key={index}
+                        className="px-4 font-semibold text-[14px]"
+                      >
                         <button
                           onClick={() => {
                             clickCategoryModel === model.name
@@ -575,13 +581,16 @@ function Categories() {
                       <div className="">
                         <button
                           onClick={() => handleClickMedicine(medi.name)}
-                          className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b "
+                          className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b border-t w-[10vw]"
                         >
                           MEDICINE
                         </button>
                       </div>
                       {medi.models.map((model, index) => (
-                        <div key={index} className="px-4 font-semibold">
+                        <div
+                          key={index}
+                          className="px-4 font-semibold text-[14px]"
+                        >
                           <button
                             onClick={() => {
                               clickCategoryModel === model.name
@@ -780,7 +789,7 @@ function Categories() {
                       <div className="">
                         <button
                           onClick={() => handleClickCosmetics(cosmetic.name)}
-                          className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b"
+                          className="text-xl text-gray-600 font-bold tracking-wider mb-6 border-b border-t w-[10vw]"
                         >
                           COSMETICS
                         </button>
@@ -788,7 +797,7 @@ function Categories() {
                       {cosmetic.models.map((model, index) => (
                         <div
                           key={index}
-                          className="px-4 font-semibold"
+                          className="px-4 font-semibold text-[14px]"
                         >
                           <button
                             onClick={() => {
