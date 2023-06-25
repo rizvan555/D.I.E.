@@ -225,7 +225,6 @@ function HomePage() {
   return (
     <div className="flex flex-col justify-center items-center p-10">
       <div className="flex flex-col items-center w-[50vw] p-4  mx-auto ">
-        <h1 className="text-3xl font-bold mb-6">Search Product</h1>
         <div className="p-6 bg-transparent mb-10">
           <SearchProduct
             handleSearch={handleSearch}

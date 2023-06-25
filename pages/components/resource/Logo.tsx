@@ -1,13 +1,16 @@
-import Link from "next/link";
 import React from "react";
 
 function Logo() {
+  const handleLogoClick = () => {
+    window.location.reload();
+  };
   return (
-    <Link href="/" className="">
-      <h1 className="text-red-500 text-3xl font-bold tracking-wider">
-        Darf-Ich-Essen
-      </h1>
-    </Link>
+    <button
+      className="text-red-500 text-3xl font-bold tracking-wider"
+      onClick={handleLogoClick}
+    >
+      Darf-Ich-Essen
+    </button>
   );
 }
 
