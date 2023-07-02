@@ -8,6 +8,7 @@ const categorySchema = new Schema({
         models: [
           {
             name: String,
+            img: String,
             alcohol: String,
             allergic: {
               Gluten: String,
@@ -99,4 +100,3 @@ const categorySchema = new Schema({
 
 export const Category = model("Category", categorySchema);
 
-mongoose.disconnect();
