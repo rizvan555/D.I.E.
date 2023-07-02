@@ -14,6 +14,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;

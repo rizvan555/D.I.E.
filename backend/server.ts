@@ -27,6 +27,22 @@ app.post("/categories/category", async (req, res) => {
     console.log(error);
   }
 });
+app.get("/categories/category/img", async (req, res) => {
+  try {
+    const categories = await Category.find();
+    res.send(categories);
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.post("/categories/category/img", async (req, res) => {
+  try {
+    const newCategory = await Category.create(req.body);
+    res.status(200).json(newCategory);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 app.listen(port, () => {
   console.log(port);

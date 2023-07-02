@@ -9,6 +9,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -127,6 +128,7 @@ function HomePage() {
             name: drink.name,
             models: filteredModels.map((drinkModel) => ({
               name: drinkModel.name,
+              img: drinkModel.img,
               alcohol: drinkModel.alcohol,
               allergic: drinkModel.allergic,
               halal: drinkModel.halal,
