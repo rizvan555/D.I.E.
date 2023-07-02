@@ -31,6 +31,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -52,6 +53,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -73,6 +75,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -153,6 +156,7 @@ function HomePage() {
             name: food.name,
             models: filteredModels.map((foodModel) => ({
               name: foodModel.name,
+              img: foodModel.img,
               alcohol: foodModel.alcohol,
               allergic: foodModel.allergic,
               halal: foodModel.halal,
@@ -177,6 +181,7 @@ function HomePage() {
             name: medicine.name,
             models: filteredModels.map((medicinModel) => ({
               name: medicinModel.name,
+              img: medicinModel.img,
               alcohol: medicinModel.alcohol,
               allergic: medicinModel.allergic,
               halal: medicinModel.halal,
@@ -205,6 +210,7 @@ function HomePage() {
             name: cosmetic.name,
             models: filteredModels.map((cosmeticModel) => ({
               name: cosmeticModel.name,
+              img: cosmeticModel.img,
               alcohol: cosmeticModel.alcohol,
               allergic: cosmeticModel.allergic,
               halal: cosmeticModel.halal,

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import ProductItem from "../../productItem";
+import Image from "next/image";
 
 interface myResult {
   result: string;
@@ -9,7 +10,13 @@ interface myResult {
 interface SearchResult {
   category: string;
   name: string;
-  models: { name: string; alcohol: string; allergic: string; halal: string }[];
+  models: {
+    name: string;
+    img: string;
+    alcohol: string;
+    allergic: string;
+    halal: string;
+  }[];
 }
 interface Category {
   category: {
@@ -18,6 +25,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -39,6 +47,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -60,6 +69,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -81,6 +91,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -230,8 +241,18 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
                           key={index}
                           className="flex flex-col gap-4 py-4 px-4 border model-box"
                         >
-                          <div className="font-bold text-primary">
-                            {model.name}
+                          <div className="flex gap-6">
+                            <div className="font-bold text-primary">
+                              {model.name}
+                            </div>
+                            <div className="">
+                              <Image
+                                src={model.img}
+                                alt="modelImage"
+                                width={50}
+                                height={30}
+                              />
+                            </div>
                           </div>
                           <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
                             <h4 className="text-gray-600 w-[7vw]">Alcohol:</h4>
