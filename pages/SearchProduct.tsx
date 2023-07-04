@@ -1,7 +1,9 @@
-import axios from "axios";
+import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import ProductItem from "./productItem";
+import axios from "axios";
 import { BiSearchAlt } from "react-icons/bi";
-import ProductItem from "../../productItem";
 import Image from "next/image";
 
 interface myResult {
@@ -111,11 +113,17 @@ interface Category {
   };
 }
 
-function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
+const SearchProduct: NextPage = ({
+  handleChange,
+  handleSearch,
+  searchResults,
+}: any) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [categories, setCategories] = useState<Category[]>([]);
   const [filteredItems, setFilteredItems] = useState<any[]>([]);
   const [showButton, setShowButton] = useState<boolean>(true);
+  const router = useRouter();
+  const { query } = router;
 
   const onSearchClick = () => {
     handleSearch();
@@ -407,6 +415,6 @@ function SearchProduct({ handleChange, handleSearch, searchResults }: any) {
       )}
     </div>
   );
-}
+};
 
 export default SearchProduct;

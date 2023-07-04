@@ -1,6 +1,7 @@
 import React from "react";
+import { NextPage } from "next";
 
-function Logo() {
+const Logo: NextPage = () => {
   const handleLogoClick = () => {
     window.location.reload();
   };
@@ -12,6 +13,6 @@ function Logo() {
       Darf-Ich-Essen
     </button>
   );
-}
+};
 
 export default Logo;

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SearchProduct from "./components/resource/SearchProduct";
+import { NextPage } from "next";
+import SearchProduct from "../SearchProduct";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 interface Category {
   category: {
@@ -95,10 +97,11 @@ interface Category {
   };
 }
 
-function HomePage() {
+const HomePage: NextPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [searchResults, setSearchResults] = useState<string[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const getCategory = async () => {
@@ -228,6 +231,13 @@ function HomePage() {
       ];
     });
     setSearchResults(results);
+
+    // -----path endpoind change-----
+    const searchResult = inputValue.toLowerCase();
+    router.push({
+      pathname: router.pathname,
+      query: { searchResult },
+    });
   };
 
   return (
@@ -243,6 +253,6 @@ function HomePage() {
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;

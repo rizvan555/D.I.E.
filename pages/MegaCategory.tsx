@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { NextPage } from "next";
 
 interface Category {
   category: {
@@ -22,7 +23,7 @@ interface Category {
   };
 }
 
-function MegaCategory() {
+const MegaCategory: NextPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [clickCategory, setClickCategory] = useState<string>("");
   const [clickCategoryModel, setClickCategoryModel] = useState<string>("");
@@ -245,6 +246,6 @@ function MegaCategory() {
       )}
     </div>
   );
-}
+};
 
 export default MegaCategory;
