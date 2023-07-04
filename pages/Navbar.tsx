@@ -1,8 +1,9 @@
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import React, { useState } from "react";
+import { NextPage } from "next";
 
-function Navbar() {
+const Navbar: NextPage = () => {
   const [navMenu, setNavMenu] = useState([
     { id: 1, name: "Home", path: "/" },
     { id: 2, name: "Categories", path: "/categories" },
@@ -28,6 +29,6 @@ function Navbar() {
       <UserButton afterSignOutUrl="/" />
     </section>
   );
-}
+};
 
 export default Navbar;

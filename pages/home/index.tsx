@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SearchProduct from "./components/resource/SearchProduct";
+import { NextPage } from "next";
+import SearchProduct from "../SearchProduct";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 interface Category {
   category: {
@@ -31,6 +33,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -52,6 +55,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -73,6 +77,7 @@ interface Category {
       models: [
         {
           name: string;
+          img: string;
           alcohol: string;
           allergic: {
             Gluten: string;
@@ -92,10 +97,11 @@ interface Category {
   };
 }
 
-function HomePage() {
+const HomePage: NextPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [inputValue, setInputValue] = useState<string>("");
   const [searchResults, setSearchResults] = useState<string[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     const getCategory = async () => {
@@ -153,6 +159,7 @@ function HomePage() {
             name: food.name,
             models: filteredModels.map((foodModel) => ({
               name: foodModel.name,
+              img: foodModel.img,
               alcohol: foodModel.alcohol,
               allergic: foodModel.allergic,
               halal: foodModel.halal,
@@ -177,6 +184,7 @@ function HomePage() {
             name: medicine.name,
             models: filteredModels.map((medicinModel) => ({
               name: medicinModel.name,
+              img: medicinModel.img,
               alcohol: medicinModel.alcohol,
               allergic: medicinModel.allergic,
               halal: medicinModel.halal,
@@ -205,6 +213,7 @@ function HomePage() {
             name: cosmetic.name,
             models: filteredModels.map((cosmeticModel) => ({
               name: cosmeticModel.name,
+              img: cosmeticModel.img,
               alcohol: cosmeticModel.alcohol,
               allergic: cosmeticModel.allergic,
               halal: cosmeticModel.halal,
@@ -222,6 +231,13 @@ function HomePage() {
       ];
     });
     setSearchResults(results);
+
+    // -----path endpoind change-----
+    const searchResult = inputValue.toLowerCase();
+    router.push({
+      pathname: router.pathname,
+      query: { searchResult },
+    });
   };
 
   return (
@@ -237,6 +253,6 @@ function HomePage() {
       </div>
     </div>
   );
-}
+};
 
 export default HomePage;

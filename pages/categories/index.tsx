@@ -6,7 +6,7 @@ import { GiWheat, GiMilkCarton, GiSesame } from "react-icons/gi";
 import { FaEgg, FaFish } from "react-icons/fa";
 import { LuNut, LuVegan } from "react-icons/lu";
 import Image from "next/image";
-import halal from "../public/images/halal.png";
+import halal from "../../public/images/halal.png";
 interface Category {
   category: {
     drink: {

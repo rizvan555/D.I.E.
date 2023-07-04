@@ -3,7 +3,7 @@ import React from "react";
 import { ImLocation2 } from "react-icons/im";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
-import Logo from "../resource/Logo";
+import Logo from "../../Logo";
 
 function Footer() {
   return (
