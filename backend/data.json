@@ -1,0 +1,762 @@
+[
+  {
+    "category": {
+      "drink": [
+        {
+          "name": "Drink",
+          "models": [
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Cola Zero",
+              "img": "/images/colaZero.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "No",
+              "vegetarian": "No",
+              "_id": "64ad4a973ecf403cbb7f34b1"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Cola Light",
+              "img": "/images/colaLight.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "No",
+              "vegetarian": "No",
+              "_id": "64ad4a973ecf403cbb7f34b2"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Pepsi Zero",
+              "img": "/images/pepsiZero.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34b3"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Pepsi Light",
+              "img": "/images/pepsiLight.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34b4"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Fanta Orange",
+              "img": "/images/fantaOrange.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34b5"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Fanta Limon",
+              "img": "/images/fantaLimon.jpg",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34b6"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Redbull",
+              "img": "/images/redbull.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34b7"
+            }
+          ],
+          "_id": "64ad4a973ecf403cbb7f34b0"
+        }
+      ],
+      "food": [
+        {
+          "name": "Food",
+          "models": [
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "Yes",
+                "Egg": "Yes",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Yoghurt Mild. Milbona",
+              "img": "/images/joghurtMilbona.jpg",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34b9"
+            },
+            {
+              "allergic": {
+                "Gluten": "Yes",
+                "Milk": "No",
+                "Egg": "Yes",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Pasta Bellisimo",
+              "img": "/images/pastaBellisimo.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34ba"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "Yes",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Pasta Ankara",
+              "img": "/images/pastaAnkara.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34bb"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Rice Mahmood",
+              "img": "/images/riceMahmood.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34bc"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Rice Basmati ",
+              "img": "/images/riceBasmati.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34bd"
+            }
+          ],
+          "_id": "64ad4a973ecf403cbb7f34b8"
+        }
+      ],
+      "medicine": [
+        {
+          "name": "Medicine",
+          "models": [
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Aspirine Upsa",
+              "img": "/images/aspirineUpsa.webp",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34bf"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Novalgin Oblong",
+              "img": "/images/novalginOblong.webp",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34c0"
+            }
+          ],
+          "_id": "64ad4a973ecf403cbb7f34be"
+        }
+      ],
+      "cosmetics": [
+        {
+          "name": "Shampoo",
+          "models": [
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34c2"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene1",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34c3"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene2",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34c4"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene3",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34c5"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene4",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4a973ecf403cbb7f34c6"
+            }
+          ],
+          "_id": "64ad4a973ecf403cbb7f34c1"
+        }
+      ]
+    },
+    "_id": "64ad4a973ecf403cbb7f34af",
+    "__v": 0
+  },
+  {
+    "category": {
+      "drink": [
+        {
+          "name": "Drink",
+          "models": [
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Cola Zero",
+              "img": "/images/colaZero.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "No",
+              "vegetarian": "No",
+              "_id": "64ad4ac23ecf403cbb7f34e2"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Cola Light",
+              "img": "/images/colaLight.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "No",
+              "vegetarian": "No",
+              "_id": "64ad4ac23ecf403cbb7f34e3"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Pepsi Zero",
+              "img": "/images/pepsiZero.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34e4"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Pepsi Light",
+              "img": "/images/pepsiLight.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34e5"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Fanta Orange",
+              "img": "/images/fantaOrange.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34e6"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Fanta Limon",
+              "img": "/images/fantaLimon.jpg",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34e7"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Redbull",
+              "img": "/images/redbull.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34e8"
+            }
+          ],
+          "_id": "64ad4ac23ecf403cbb7f34e1"
+        }
+      ],
+      "food": [
+        {
+          "name": "Food",
+          "models": [
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "Yes",
+                "Egg": "Yes",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Yoghurt Mild. Milbona",
+              "img": "/images/joghurtMilbona.jpg",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34ea"
+            },
+            {
+              "allergic": {
+                "Gluten": "Yes",
+                "Milk": "No",
+                "Egg": "Yes",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Pasta Bellisimo",
+              "img": "/images/pastaBellisimo.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34eb"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "Yes",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Pasta Ankara",
+              "img": "/images/pastaAnkara.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34ec"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Rice Mahmood",
+              "img": "/images/riceMahmood.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34ed"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Rice Basmati ",
+              "img": "/images/riceBasmati.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34ee"
+            }
+          ],
+          "_id": "64ad4ac23ecf403cbb7f34e9"
+        }
+      ],
+      "medicine": [
+        {
+          "name": "Medicine",
+          "models": [
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Aspirine Upsa",
+              "img": "/images/aspirineUpsa.webp",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34f0"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Novalgin Oblong",
+              "img": "/images/novalginOblong.webp",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34f1"
+            }
+          ],
+          "_id": "64ad4ac23ecf403cbb7f34ef"
+        }
+      ],
+      "cosmetics": [
+        {
+          "name": "Shampoo",
+          "models": [
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34f3"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene1",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34f4"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene2",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34f5"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene3",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34f6"
+            },
+            {
+              "allergic": {
+                "Gluten": "No",
+                "Milk": "No",
+                "Egg": "No",
+                "Nuts": "No",
+                "Sesame": "No",
+                "Wheat": "No",
+                "Fish": "No"
+              },
+              "name": "Shampoo Pantene4",
+              "img": "/images/shampooPantene.png",
+              "alcohol": "No",
+              "halal": "Yes",
+              "vegan": "Yes",
+              "vegetarian": "Yes",
+              "_id": "64ad4ac23ecf403cbb7f34f7"
+            }
+          ],
+          "_id": "64ad4ac23ecf403cbb7f34f2"
+        }
+      ]
+    },
+    "_id": "64ad4ac23ecf403cbb7f34e0",
+    "__v": 0
+  }
+]

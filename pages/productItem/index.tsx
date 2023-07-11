@@ -9,7 +9,7 @@ function ProductItem({ filteredItems }: any) {
           {item.models.map((model: any, modelIndex: number) => (
             <div
               key={modelIndex}
-              className="flex w-[95vw] items-center justify-center"
+              className="flex items-center justify-around"
             >
               <Image
                 src={model.img}
@@ -18,7 +18,7 @@ function ProductItem({ filteredItems }: any) {
                 height={200}
                 className=" hover:scale-110 transition-all cursor-pointer"
               />
-              <div className="flex flex-col items-center justify-center w-[40vw]">
+              <div className="flex flex-col items-center justify-center w-[80vw]">
                 <h1 className="text-3xl font-bold mb-6">{model.name}</h1>
                 <ul className="w-[18vw] text-start">
                   <li className="flex items-center w-[18vw]">
