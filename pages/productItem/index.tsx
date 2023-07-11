@@ -1,16 +1,14 @@
-import Image from "next/image";
-import React from "react";
+import { NextPage } from 'next';
+import Image from 'next/image';
+import React from 'react';
 
-function ProductItem({ filteredItems }: any) {
+const ProductItem: NextPage = ({ filteredItems }: any) => {
   return (
     <div className="flex">
       {filteredItems.map((item: any, index: number) => (
         <div key={index}>
           {item.models.map((model: any, modelIndex: number) => (
-            <div
-              key={modelIndex}
-              className="flex items-center justify-around"
-            >
+            <div key={modelIndex} className="flex items-center justify-around">
               <Image
                 src={model.img}
                 alt="image"
@@ -25,9 +23,9 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl">Alcohol:</p>
                     <p
                       className={`${
-                        model.alcohol === "Yes"
-                          ? "text-red-500"
-                          : "text-green-500"
+                        model.alcohol === 'Yes'
+                          ? 'text-red-500'
+                          : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.alcohol}
@@ -37,7 +35,7 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl">Halal:</p>
                     <p
                       className={`${
-                        model.halal === "No" ? "text-red-500" : "text-green-500"
+                        model.halal === 'No' ? 'text-red-500' : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.halal}
@@ -47,19 +45,19 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl">Vegan:</p>
                     <p
                       className={`${
-                        model.vegan === "No" ? "text-red-500" : "text-green-500"
+                        model.vegan === 'No' ? 'text-red-500' : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.vegan}
                     </p>
                   </li>
                   <li className="flex items-center w-[18vw]">
-                    <p className="w-[20vw] text-xl">Vegetarian:</p>{" "}
+                    <p className="w-[20vw] text-xl">Vegetarian:</p>{' '}
                     <p
                       className={`${
-                        model.vegetarian === "No"
-                          ? "text-red-500"
-                          : "text-green-500"
+                        model.vegetarian === 'No'
+                          ? 'text-red-500'
+                          : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.vegetarian}
@@ -69,9 +67,9 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl">Gluten:</p>
                     <p
                       className={`${
-                        model.allergic.Gluten === "Yes"
-                          ? "text-red-500"
-                          : "text-green-500"
+                        model.allergic.Gluten === 'Yes'
+                          ? 'text-red-500'
+                          : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.allergic.Gluten}
@@ -81,9 +79,9 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl">Milk:</p>
                     <p
                       className={`${
-                        model.allergic.Milk === "Yes"
-                          ? "text-red-500"
-                          : "text-green-500"
+                        model.allergic.Milk === 'Yes'
+                          ? 'text-red-500'
+                          : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.allergic.Milk}
@@ -93,9 +91,9 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl">Egg:</p>
                     <p
                       className={`${
-                        model.allergic.Egg === "Yes"
-                          ? "text-red-500"
-                          : "text-green-500"
+                        model.allergic.Egg === 'Yes'
+                          ? 'text-red-500'
+                          : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.allergic.Egg}
@@ -105,9 +103,9 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl">Nuts:</p>
                     <p
                       className={`${
-                        model.allergic.Nuts === "Yes"
-                          ? "text-red-500"
-                          : "text-green-500"
+                        model.allergic.Nuts === 'Yes'
+                          ? 'text-red-500'
+                          : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.allergic.Nuts}
@@ -117,9 +115,9 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl">Sesame:</p>
                     <p
                       className={`${
-                        model.allergic.Sesame === "Yes"
-                          ? "text-red-500"
-                          : "text-green-500"
+                        model.allergic.Sesame === 'Yes'
+                          ? 'text-red-500'
+                          : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.allergic.Sesame}
@@ -129,9 +127,9 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl"> Wheat:</p>
                     <p
                       className={`${
-                        model.allergic.Wheat === "Yes"
-                          ? "text-red-500"
-                          : "text-green-500"
+                        model.allergic.Wheat === 'Yes'
+                          ? 'text-red-500'
+                          : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.allergic.Wheat}
@@ -141,9 +139,9 @@ function ProductItem({ filteredItems }: any) {
                     <p className="w-[20vw] text-xl">Fish:</p>
                     <p
                       className={`${
-                        model.allergic.Fish === "Yes"
-                          ? "text-red-500"
-                          : "text-green-500"
+                        model.allergic.Fish === 'Yes'
+                          ? 'text-red-500'
+                          : 'text-green-500'
                       } px-2 text-[14px] font-bold text-xl`}
                     >
                       {model.allergic.Fish}
@@ -157,6 +155,6 @@ function ProductItem({ filteredItems }: any) {
       ))}
     </div>
   );
-}
+};
 
 export default ProductItem;
