@@ -118,9 +118,7 @@ const AddProduct: NextPage = () => {
       <div>Product: {submittedValuesProduct.product}</div>
       <div>Model: {submittedValuesModel.model}</div>
       {selectedCheckboxTitles.map((title, index) => (
-        <div key={index} className="">
-          {title}
-        </div>
+        <div key={index}>{title}</div>
       ))}
     </div>
   );
