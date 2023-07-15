@@ -4,16 +4,21 @@ import axios from 'axios';
 import AllergicCheckbox from '../components/AllergicCheckbox';
 import CategoryCheckbox from '../components/CategoryCheckbox';
 
+interface CheckboxItem {
+  title: string;
+  status: boolean;
+}
+
 const AddProduct: NextPage = () => {
   const [inputs, setInputs] = useState([
     { title: 'Category', type: 'text', placeholder: 'Category' },
     { title: 'Product', type: 'text', placeholder: 'Product' },
     { title: 'Model', type: 'text', placeholder: 'Model' },
   ]);
-
   const [categoryValue, setCategoryValue] = useState('');
   const [productValue, setProductValue] = useState('');
   const [modelValue, setModelValue] = useState('');
+
   const [submittedValuesCategory, setSubmittedValuesCategory] = useState<{
     category: string;
   }>({ category: '' });
@@ -24,9 +29,15 @@ const AddProduct: NextPage = () => {
     model: string;
   }>({ model: '' });
 
+  const [checkboxes, setCheckboxes] = useState<CheckboxItem[]>([
+    { title: 'Halal', status: true },
+    { title: 'Vegan', status: true },
+    { title: 'Vegetarian', status: true },
+    { title: 'Alcohol', status: true },
+  ]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (categoryValue || productValue || modelValue) {
       setSubmittedValuesCategory({ category: categoryValue });
       setSubmittedValuesProduct({ product: productValue });
@@ -36,6 +47,29 @@ const AddProduct: NextPage = () => {
       setProductValue('');
       setModelValue('');
 
+      const halalValue = checkboxes.find(
+        (checkbox) => checkbox.title === 'Halal'
+      )?.status
+        ? 'Yes'
+        : 'No';
+
+      const veganValue = checkboxes.find(
+        (checkbox) => checkbox.title === 'Vegan'
+      )?.status
+        ? 'Yes'
+        : 'No';
+
+      const vegetarianValue = checkboxes.find(
+        (checkbox) => checkbox.title === 'Vegetarian'
+      )?.status
+        ? 'Yes'
+        : 'No';
+      const alcoholValue = checkboxes.find(
+        (checkbox) => checkbox.title === 'Alcohol'
+      )?.status
+        ? 'Yes'
+        : 'No';
+
       const categoryData = {
         [categoryValue.toLowerCase()]: [
           {
@@ -43,6 +77,20 @@ const AddProduct: NextPage = () => {
             models: [
               {
                 name: modelValue,
+                img: '',
+                alcohol: alcoholValue,
+                allergic: {
+                  Gluten: '',
+                  Milk: '',
+                  Egg: '',
+                  Nuts: '',
+                  Sesame: '',
+                  Wheat: '',
+                  Fish: '',
+                },
+                halal: halalValue,
+                vegan: veganValue,
+                vegetarian: vegetarianValue,
               },
             ],
           },
@@ -51,6 +99,7 @@ const AddProduct: NextPage = () => {
         medicine: [],
         cosmetics: [],
       };
+
       try {
         await axios.post('http://localhost:3001/categories/category', {
           category: categoryData,

@@ -20,6 +20,7 @@ function CategoryCheckbox() {
     );
     if (selectedCheckbox) {
       selectedCheckbox.status = !selectedCheckbox.status;
+      console.log(selectedCheckbox.status);
       setCheckboxes([...checkboxes]);
     }
   };
