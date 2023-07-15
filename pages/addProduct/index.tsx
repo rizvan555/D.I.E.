@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
+import axios from 'axios';
 import AllergicCheckbox from '../components/AllergicCheckbox';
 import CategoryCheckbox from '../components/CategoryCheckbox';
 
@@ -23,19 +24,40 @@ const AddProduct: NextPage = () => {
     model: string;
   }>({ model: '' });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (categoryValue) {
+
+    if (categoryValue || productValue || modelValue) {
       setSubmittedValuesCategory({ category: categoryValue });
-      setCategoryValue('');
-    }
-    if (productValue) {
       setSubmittedValuesProduct({ product: productValue });
-      setProductValue('');
-    }
-    if (modelValue) {
       setSubmittedValuesModel({ model: modelValue });
+
+      setCategoryValue('');
+      setProductValue('');
       setModelValue('');
+
+      const categoryData = {
+        [categoryValue.toLowerCase()]: [
+          {
+            name: productValue,
+            models: [
+              {
+                name: modelValue,
+              },
+            ],
+          },
+        ],
+        food: [],
+        medicine: [],
+        cosmetics: [],
+      };
+      try {
+        await axios.post('http://localhost:3001/categories/category', {
+          category: categoryData,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
