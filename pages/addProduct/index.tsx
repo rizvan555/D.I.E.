@@ -1,7 +1,13 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
+import axios from 'axios';
 import AllergicCheckbox from '../components/AllergicCheckbox';
 import CategoryCheckbox from '../components/CategoryCheckbox';
+
+interface CheckboxItem {
+  title: string;
+  status: boolean;
+}
 
 const AddProduct: NextPage = () => {
   const [inputs, setInputs] = useState([
@@ -9,10 +15,10 @@ const AddProduct: NextPage = () => {
     { title: 'Product', type: 'text', placeholder: 'Product' },
     { title: 'Model', type: 'text', placeholder: 'Model' },
   ]);
-
   const [categoryValue, setCategoryValue] = useState('');
   const [productValue, setProductValue] = useState('');
   const [modelValue, setModelValue] = useState('');
+
   const [submittedValuesCategory, setSubmittedValuesCategory] = useState<{
     category: string;
   }>({ category: '' });
@@ -23,19 +29,146 @@ const AddProduct: NextPage = () => {
     model: string;
   }>({ model: '' });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [checkboxes, setCheckboxes] = useState<CheckboxItem[]>([
+    { title: 'Halal', status: true },
+    { title: 'Vegan', status: true },
+    { title: 'Vegetarian', status: true },
+    { title: 'Alcohol', status: true },
+  ]);
+  const [checkboxAllergic, setCheckboxAllergic] = useState<CheckboxItem[]>([
+    { title: 'Gluten', status: true },
+    { title: 'Milk', status: true },
+    { title: 'Egg', status: true },
+    { title: 'Nuts', status: true },
+    { title: 'Sesame', status: true },
+    { title: 'Wheat', status: true },
+    { title: 'Fish', status: true },
+  ]);
+
+  const handleFilterCheckboxes = (title: string) => {
+    const updateCheckbox = checkboxes.map((checkbox) => {
+      if (checkbox.title === title) {
+        return { ...checkbox, status: !checkbox.status };
+      }
+      return checkbox;
+    });
+    setCheckboxes(updateCheckbox);
+  };
+
+  const handleAllergicCheckboxes = (title: string) => {
+    const updateAllergic = checkboxAllergic.map((allergic) => {
+      if (allergic.title === title) {
+        return { ...allergic, status: !allergic.status };
+      }
+      return allergic;
+    });
+    setCheckboxAllergic(updateAllergic);
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (categoryValue) {
+    if (categoryValue || productValue || modelValue) {
       setSubmittedValuesCategory({ category: categoryValue });
-      setCategoryValue('');
-    }
-    if (productValue) {
       setSubmittedValuesProduct({ product: productValue });
-      setProductValue('');
-    }
-    if (modelValue) {
       setSubmittedValuesModel({ model: modelValue });
+
+      setCategoryValue('');
+      setProductValue('');
       setModelValue('');
+
+      const halalValue = checkboxes.find(
+        (checkbox) => checkbox.title === 'Halal'
+      )?.status
+        ? 'No'
+        : 'Yes';
+
+      const veganValue = checkboxes.find(
+        (checkbox) => checkbox.title === 'Vegan'
+      )?.status
+        ? 'No'
+        : 'Yes';
+
+      const vegetarianValue = checkboxes.find(
+        (checkbox) => checkbox.title === 'Vegetarian'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const alcoholValue = checkboxes.find(
+        (checkbox) => checkbox.title === 'Alcohol'
+      )?.status
+        ? 'No'
+        : 'Yes';
+
+      const glutenValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Gluten'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const milkValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Milk'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const eggValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Egg'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const nutsValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Nuts'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const sesameValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Sesame'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const wheatValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Wheat'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const fishValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Fish'
+      )?.status
+        ? 'No'
+        : 'Yes';
+
+      const categoryData = {
+        [categoryValue.toLowerCase()]: [
+          {
+            name: productValue,
+            models: [
+              {
+                name: modelValue,
+                img: '',
+                alcohol: alcoholValue,
+                allergic: {
+                  Gluten: glutenValue,
+                  Milk: milkValue,
+                  Egg: eggValue,
+                  Nuts: nutsValue,
+                  Sesame: sesameValue,
+                  Wheat: wheatValue,
+                  Fish: fishValue,
+                },
+                halal: halalValue,
+                vegan: veganValue,
+                vegetarian: vegetarianValue,
+              },
+            ],
+          },
+        ],
+      };
+
+      try {
+        await axios.post('http://localhost:3001/categories/category', {
+          category: categoryData,
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -80,8 +213,8 @@ const AddProduct: NextPage = () => {
         <button className="border" type="submit">
           SEND
         </button>
-        <CategoryCheckbox />
-        <AllergicCheckbox />
+        <CategoryCheckbox filterCheckboxes={handleFilterCheckboxes} />
+        <AllergicCheckbox handleAllergicCheckboxes={handleAllergicCheckboxes} />
       </form>
       <div>Category: {submittedValuesCategory.category}</div>
       <div>Product: {submittedValuesProduct.product}</div>

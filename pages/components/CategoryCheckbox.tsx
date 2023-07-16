@@ -6,7 +6,11 @@ interface CheckboxItem {
   status: boolean;
 }
 
-function CategoryCheckbox() {
+interface CategoryCheckboxProps {
+  filterCheckboxes: (title: string) => void;
+}
+
+function CategoryCheckbox({ filterCheckboxes }: CategoryCheckboxProps) {
   const [checkboxes, setCheckboxes] = useState<CheckboxItem[]>([
     { title: 'Halal', status: true },
     { title: 'Vegan', status: true },
@@ -14,14 +18,15 @@ function CategoryCheckbox() {
     { title: 'Alcohol', status: true },
   ]);
 
-  const filterCheckboxes = (title: string) => {
-    const selectedCheckbox = checkboxes.find(
-      (checkbox) => checkbox.title === title
-    );
-    if (selectedCheckbox) {
-      selectedCheckbox.status = !selectedCheckbox.status;
-      setCheckboxes([...checkboxes]);
-    }
+  const handleCheckboxClick = (title: string) => {
+    const updatedCheckboxes = checkboxes.map((checkbox) => {
+      if (checkbox.title === title) {
+        return { ...checkbox, status: !checkbox.status };
+      }
+      return checkbox;
+    });
+    setCheckboxes(updatedCheckboxes);
+    filterCheckboxes(title); // filterCheckboxes funksiyasini çağıraraq AddProduct sehifesindeki durumu güncelleye bilirik.
   };
 
   const selectedCheckboxTitles = checkboxes
@@ -36,7 +41,7 @@ function CategoryCheckbox() {
             <p>{checkbox.title}</p>
             <Checkbox
               checked={!checkbox.status}
-              onClick={() => filterCheckboxes(checkbox.title)}
+              onClick={() => handleCheckboxClick(checkbox.title)}
             />
           </li>
         ))}

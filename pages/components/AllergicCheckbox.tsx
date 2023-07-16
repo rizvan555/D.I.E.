@@ -5,7 +5,11 @@ interface CheckboxItem {
   title: string;
   status: boolean;
 }
-function AllergicCheckbox() {
+interface AllergicCheckboxProps {
+  handleAllergicCheckboxes: (title: string) => void;
+}
+
+function AllergicCheckbox({ handleAllergicCheckboxes }: AllergicCheckboxProps) {
   const [checkboxAllergic, setCheckboxAllergic] = useState<CheckboxItem[]>([
     { title: 'Gluten', status: true },
     { title: 'Milk', status: true },
@@ -16,13 +20,14 @@ function AllergicCheckbox() {
     { title: 'Fish', status: true },
   ]);
 
-  const filterAllergic = (title: string) => {
+  const handleCheckboxClick = (title: string) => {
     const selectedAllergic = checkboxAllergic.find(
       (allergic) => allergic.title === title
     );
     if (selectedAllergic) {
       selectedAllergic.status = !selectedAllergic.status;
       setCheckboxAllergic([...checkboxAllergic]);
+      handleAllergicCheckboxes(title);
     }
   };
 
@@ -38,7 +43,7 @@ function AllergicCheckbox() {
             <p>{allergic.title}</p>
             <Checkbox
               checked={!allergic.status}
-              onClick={() => filterAllergic(allergic.title)}
+              onClick={() => handleCheckboxClick(allergic.title)}
             />
           </li>
         ))}
