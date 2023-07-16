@@ -35,6 +35,35 @@ const AddProduct: NextPage = () => {
     { title: 'Vegetarian', status: true },
     { title: 'Alcohol', status: true },
   ]);
+  const [checkboxAllergic, setCheckboxAllergic] = useState<CheckboxItem[]>([
+    { title: 'Gluten', status: true },
+    { title: 'Milk', status: true },
+    { title: 'Egg', status: true },
+    { title: 'Nuts', status: true },
+    { title: 'Sesame', status: true },
+    { title: 'Wheat', status: true },
+    { title: 'Fish', status: true },
+  ]);
+
+  const handleFilterCheckboxes = (title: string) => {
+    const updateCheckbox = checkboxes.map((checkbox) => {
+      if (checkbox.title === title) {
+        return { ...checkbox, status: !checkbox.status };
+      }
+      return checkbox;
+    });
+    setCheckboxes(updateCheckbox);
+  };
+
+  const handleAllergicCheckboxes = (title: string) => {
+    const updateAllergic = checkboxAllergic.map((allergic) => {
+      if (allergic.title === title) {
+        return { ...allergic, status: !allergic.status };
+      }
+      return allergic;
+    });
+    setCheckboxAllergic(updateAllergic);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,25 +79,61 @@ const AddProduct: NextPage = () => {
       const halalValue = checkboxes.find(
         (checkbox) => checkbox.title === 'Halal'
       )?.status
-        ? 'Yes'
-        : 'No';
+        ? 'No'
+        : 'Yes';
 
       const veganValue = checkboxes.find(
         (checkbox) => checkbox.title === 'Vegan'
       )?.status
-        ? 'Yes'
-        : 'No';
+        ? 'No'
+        : 'Yes';
 
       const vegetarianValue = checkboxes.find(
         (checkbox) => checkbox.title === 'Vegetarian'
       )?.status
-        ? 'Yes'
-        : 'No';
+        ? 'No'
+        : 'Yes';
       const alcoholValue = checkboxes.find(
         (checkbox) => checkbox.title === 'Alcohol'
       )?.status
-        ? 'Yes'
-        : 'No';
+        ? 'No'
+        : 'Yes';
+
+      const glutenValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Gluten'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const milkValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Milk'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const eggValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Egg'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const nutsValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Nuts'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const sesameValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Sesame'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const wheatValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Wheat'
+      )?.status
+        ? 'No'
+        : 'Yes';
+      const fishValue = checkboxAllergic.find(
+        (allergic) => allergic.title === 'Fish'
+      )?.status
+        ? 'No'
+        : 'Yes';
 
       const categoryData = {
         [categoryValue.toLowerCase()]: [
@@ -80,13 +145,13 @@ const AddProduct: NextPage = () => {
                 img: '',
                 alcohol: alcoholValue,
                 allergic: {
-                  Gluten: '',
-                  Milk: '',
-                  Egg: '',
-                  Nuts: '',
-                  Sesame: '',
-                  Wheat: '',
-                  Fish: '',
+                  Gluten: glutenValue,
+                  Milk: milkValue,
+                  Egg: eggValue,
+                  Nuts: nutsValue,
+                  Sesame: sesameValue,
+                  Wheat: wheatValue,
+                  Fish: fishValue,
                 },
                 halal: halalValue,
                 vegan: veganValue,
@@ -95,9 +160,6 @@ const AddProduct: NextPage = () => {
             ],
           },
         ],
-        food: [],
-        medicine: [],
-        cosmetics: [],
       };
 
       try {
@@ -151,8 +213,8 @@ const AddProduct: NextPage = () => {
         <button className="border" type="submit">
           SEND
         </button>
-        <CategoryCheckbox />
-        <AllergicCheckbox />
+        <CategoryCheckbox filterCheckboxes={handleFilterCheckboxes} />
+        <AllergicCheckbox handleAllergicCheckboxes={handleAllergicCheckboxes} />
       </form>
       <div>Category: {submittedValuesCategory.category}</div>
       <div>Product: {submittedValuesProduct.product}</div>
