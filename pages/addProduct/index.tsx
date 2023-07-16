@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import AllergicCheckbox from '../components/AllergicCheckbox';
 import CategoryCheckbox from '../components/CategoryCheckbox';
+import Image from 'next/image';
 
 interface CheckboxItem {
   title: string;
@@ -13,11 +14,11 @@ const AddProduct: NextPage = () => {
   const [inputs, setInputs] = useState([
     { title: 'Category', type: 'text', placeholder: 'Category' },
     { title: 'Product', type: 'text', placeholder: 'Product' },
-    { title: 'Model', type: 'text', placeholder: 'Model' },
+    { title: 'Image', type: 'file', placeholder: 'Image' },
   ]);
   const [categoryValue, setCategoryValue] = useState('');
   const [productValue, setProductValue] = useState('');
-  const [modelValue, setModelValue] = useState('');
+  const [imageValue, setImageValue] = useState('');
 
   const [submittedValuesCategory, setSubmittedValuesCategory] = useState<{
     category: string;
@@ -25,9 +26,9 @@ const AddProduct: NextPage = () => {
   const [submittedValuesProduct, setSubmittedValuesProduct] = useState<{
     product: string;
   }>({ product: '' });
-  const [submittedValuesModel, setSubmittedValuesModel] = useState<{
-    model: string;
-  }>({ model: '' });
+  const [submittedValueImage, setSubmittedValueImage] = useState<{
+    image: string;
+  }>({ image: '' });
 
   const [checkboxes, setCheckboxes] = useState<CheckboxItem[]>([
     { title: 'Halal', status: true },
@@ -67,14 +68,14 @@ const AddProduct: NextPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (categoryValue || productValue || modelValue) {
+    if (categoryValue || productValue || imageValue) {
       setSubmittedValuesCategory({ category: categoryValue });
       setSubmittedValuesProduct({ product: productValue });
-      setSubmittedValuesModel({ model: modelValue });
+      setSubmittedValueImage({ image: imageValue });
 
       setCategoryValue('');
       setProductValue('');
-      setModelValue('');
+      setImageValue('');
 
       const halalValue = checkboxes.find(
         (checkbox) => checkbox.title === 'Halal'
@@ -138,11 +139,11 @@ const AddProduct: NextPage = () => {
       const categoryData = {
         [categoryValue.toLowerCase()]: [
           {
-            name: productValue,
+            name: categoryValue,
             models: [
               {
-                name: modelValue,
-                img: '',
+                name: productValue,
+                img: imageValue,
                 alcohol: alcoholValue,
                 allergic: {
                   Gluten: glutenValue,
@@ -173,20 +174,20 @@ const AddProduct: NextPage = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-5 justify-center items-center m-20"
       >
         {inputs.map((input, index) => (
-          <div key={index}>
+          <div key={index} className="">
             {input.title === 'Category' && (
               <input
                 value={categoryValue}
                 onChange={(e) => setCategoryValue(e.target.value)}
                 type={input.type}
                 placeholder={input.placeholder}
-                className="border"
+                className="border py-1 px-2 w-[30vw] rounded"
               />
             )}
             {input.title === 'Product' && (
@@ -195,30 +196,42 @@ const AddProduct: NextPage = () => {
                 onChange={(e) => setProductValue(e.target.value)}
                 type={input.type}
                 placeholder={input.placeholder}
-                className="border"
+                className="border py-1 px-2 w-[30vw] rounded"
               />
             )}
-            {input.title === 'Model' && (
+            {input.title === 'Image' && (
               <input
-                value={modelValue}
-                onChange={(e) => setModelValue(e.target.value)}
+                value={imageValue}
+                onChange={(e) => setImageValue(e.target.value)}
                 type={input.type}
                 placeholder={input.placeholder}
-                className="border"
+                className="border w-[30vw] rounded"
               />
             )}
           </div>
         ))}
 
-        <button className="border" type="submit">
+        <button
+          className="border w-[10vw] rounded tracking-wider"
+          type="submit"
+        >
           SEND
         </button>
+
         <CategoryCheckbox filterCheckboxes={handleFilterCheckboxes} />
         <AllergicCheckbox handleAllergicCheckboxes={handleAllergicCheckboxes} />
       </form>
       <div>Category: {submittedValuesCategory.category}</div>
       <div>Product: {submittedValuesProduct.product}</div>
-      <div>Model: {submittedValuesModel.model}</div>
+      <div>
+        Image:
+        <Image
+          src={submittedValueImage.image}
+          alt="image"
+          width={200}
+          height={200}
+        />
+      </div>
     </div>
   );
 };

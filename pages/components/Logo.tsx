@@ -7,7 +7,7 @@ const Logo: NextPage = () => {
   };
   return (
     <button
-      className="text-red-500 text-3xl font-bold tracking-wider"
+      className="text-red-500 text-2xl font-bold tracking-wider"
       onClick={handleLogoClick}
     >
       Darf-Ich-Essen

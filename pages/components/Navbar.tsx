@@ -18,7 +18,7 @@ const Navbar: NextPage = () => {
           return (
             <li key={nav.id}>
               <Link href={nav.path} legacyBehavior>
-                <a className="md:text-[18px] font-bold active:scale-90 focus:text-slate-400 focus:font-normal transition-all ">
+                <a className="md:text-[15px] font-bold active:scale-90 focus:text-slate-400 focus:font-normal transition-all ">
                   {nav.name}
                 </a>
               </Link>

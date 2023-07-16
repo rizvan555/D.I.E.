@@ -1,10 +1,10 @@
-import { NextPage } from "next";
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import ProductItem from "./productItem";
-import axios from "axios";
-import { BiSearchAlt } from "react-icons/bi";
-import Image from "next/image";
+import { NextPage } from 'next';
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import ProductItem from '../productItem';
+import axios from 'axios';
+import { BiSearchAlt } from 'react-icons/bi';
+import Image from 'next/image';
 
 interface myResult {
   result: string;
@@ -118,7 +118,7 @@ const SearchProduct: NextPage = ({
   handleSearch,
   searchResults,
 }: any) => {
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>('');
   const [categories, setCategories] = useState<Category[]>([]);
   const [filteredItems, setFilteredItems] = useState<any[]>([]);
   const [showButton, setShowButton] = useState<boolean>(true);
@@ -129,14 +129,14 @@ const SearchProduct: NextPage = ({
     handleSearch();
   };
   const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       handleSearch();
     }
   };
   useEffect(() => {
     const getCategory = async () => {
       const response = await axios.get(
-        "http://localhost:3001/categories/category"
+        'http://localhost:3001/categories/category'
       );
       setCategories(response.data);
     };
@@ -266,9 +266,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]">Alcohol:</h4>
                             <p
                               className={`${
-                                model.alcohol === "Yes"
-                                  ? "bg-red-500"
-                                  : "bg-green-500"
+                                model.alcohol === 'Yes'
+                                  ? 'bg-red-500'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.alcohol}
@@ -278,9 +278,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]">Gluten:</h4>
                             <p
                               className={`${
-                                model.allergic.Gluten === "Yes"
-                                  ? "bg-red-500"
-                                  : "bg-green-500"
+                                model.allergic.Gluten === 'Yes'
+                                  ? 'bg-red-500'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.allergic.Gluten}
@@ -290,9 +290,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]"> Milk:</h4>
                             <p
                               className={`${
-                                model.allergic.Milk === "Yes"
-                                  ? "bg-red-500"
-                                  : "bg-green-500"
+                                model.allergic.Milk === 'Yes'
+                                  ? 'bg-red-500'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.allergic.Milk}
@@ -302,9 +302,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]"> Egg:</h4>
                             <p
                               className={`${
-                                model.allergic.Egg === "Yes"
-                                  ? "bg-red-500"
-                                  : "bg-green-500"
+                                model.allergic.Egg === 'Yes'
+                                  ? 'bg-red-500'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.allergic.Egg}
@@ -314,9 +314,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]"> Nuts:</h4>
                             <p
                               className={`${
-                                model.allergic.Nuts === "Yes"
-                                  ? "bg-red-500"
-                                  : "bg-green-500"
+                                model.allergic.Nuts === 'Yes'
+                                  ? 'bg-red-500'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.allergic.Nuts}
@@ -326,9 +326,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]"> Sesame:</h4>
                             <p
                               className={`${
-                                model.allergic.Sesame === "Yes"
-                                  ? "bg-red-500"
-                                  : "bg-green-500"
+                                model.allergic.Sesame === 'Yes'
+                                  ? 'bg-red-500'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.allergic.Sesame}
@@ -338,9 +338,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]"> Wheat:</h4>
                             <p
                               className={`${
-                                model.allergic.Wheat === "Yes"
-                                  ? "bg-red-500"
-                                  : "bg-green-500"
+                                model.allergic.Wheat === 'Yes'
+                                  ? 'bg-red-500'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.allergic.Wheat}
@@ -350,9 +350,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]"> Nuts:</h4>
                             <p
                               className={`${
-                                model.allergic.Nuts === "Yes"
-                                  ? "bg-red-500"
-                                  : "bg-green-500"
+                                model.allergic.Nuts === 'Yes'
+                                  ? 'bg-red-500'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.allergic.Nuts}
@@ -362,9 +362,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]"> Halal:</h4>
                             <p
                               className={`${
-                                model.halal === "No"
-                                  ? "bg-red-600"
-                                  : "bg-green-500"
+                                model.halal === 'No'
+                                  ? 'bg-red-600'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.halal}
@@ -374,9 +374,9 @@ const SearchProduct: NextPage = ({
                             <h4 className="text-gray-600 w-[7vw]"> Vegan:</h4>
                             <p
                               className={`${
-                                model.halal === "No"
-                                  ? "bg-red-600"
-                                  : "bg-green-500"
+                                model.halal === 'No'
+                                  ? 'bg-red-600'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.vegan}
@@ -384,14 +384,14 @@ const SearchProduct: NextPage = ({
                           </div>
                           <div className="flex items-center gap-4 font-semibold text-gray-600 text-start">
                             <h4 className="text-gray-600 w-[7vw]">
-                              {" "}
+                              {' '}
                               Vegetarian:
                             </h4>
                             <p
                               className={`${
-                                model.halal === "No"
-                                  ? "bg-red-600"
-                                  : "bg-green-500"
+                                model.halal === 'No'
+                                  ? 'bg-red-600'
+                                  : 'bg-green-500'
                               } border px-2 text-white text-[14px]`}
                             >
                               {model.vegetarian}
