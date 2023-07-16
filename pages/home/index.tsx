@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { NextPage } from "next";
-import SearchProduct from "../SearchProduct";
-import axios from "axios";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from 'react';
+import { NextPage } from 'next';
+import SearchProduct from '../components/SearchProduct';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 interface Category {
   category: {
@@ -99,14 +99,14 @@ interface Category {
 
 const HomePage: NextPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [inputValue, setInputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>('');
   const [searchResults, setSearchResults] = useState<string[]>([]);
   const router = useRouter();
 
   useEffect(() => {
     const getCategory = async () => {
       const response = await axios.get(
-        "http://localhost:3001/categories/category"
+        'http://localhost:3001/categories/category'
       );
       setCategories(response.data);
     };
@@ -130,7 +130,7 @@ const HomePage: NextPage = () => {
             model.name.toLowerCase().includes(inputValue.toLowerCase())
           );
           return {
-            category: "Drink",
+            category: 'Drink',
             name: drink.name,
             models: filteredModels.map((drinkModel) => ({
               name: drinkModel.name,
@@ -155,7 +155,7 @@ const HomePage: NextPage = () => {
             model.name.toLowerCase().includes(inputValue.toLowerCase())
           );
           return {
-            category: "Food",
+            category: 'Food',
             name: food.name,
             models: filteredModels.map((foodModel) => ({
               name: foodModel.name,
@@ -180,7 +180,7 @@ const HomePage: NextPage = () => {
             model.name.toLowerCase().includes(inputValue.toLowerCase())
           );
           return {
-            category: "Medicine",
+            category: 'Medicine',
             name: medicine.name,
             models: filteredModels.map((medicinModel) => ({
               name: medicinModel.name,
@@ -209,7 +209,7 @@ const HomePage: NextPage = () => {
             model.name.toLowerCase().includes(inputValue.toLowerCase())
           );
           return {
-            category: "Medicine",
+            category: 'Medicine',
             name: cosmetic.name,
             models: filteredModels.map((cosmeticModel) => ({
               name: cosmeticModel.name,
