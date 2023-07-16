@@ -14,10 +14,12 @@ const AddProduct: NextPage = () => {
     { title: 'Category', type: 'text', placeholder: 'Category' },
     { title: 'Product', type: 'text', placeholder: 'Product' },
     { title: 'Model', type: 'text', placeholder: 'Model' },
+    { title: 'Image', type: 'file', placeholder: 'Image' },
   ]);
   const [categoryValue, setCategoryValue] = useState('');
   const [productValue, setProductValue] = useState('');
   const [modelValue, setModelValue] = useState('');
+  const [imageValue, setImageValue] = useState('');
 
   const [submittedValuesCategory, setSubmittedValuesCategory] = useState<{
     category: string;
@@ -28,6 +30,9 @@ const AddProduct: NextPage = () => {
   const [submittedValuesModel, setSubmittedValuesModel] = useState<{
     model: string;
   }>({ model: '' });
+  const [submittedValueImage, setSubmittedValueImage] = useState<{
+    image: string;
+  }>({ image: '' });
 
   const [checkboxes, setCheckboxes] = useState<CheckboxItem[]>([
     { title: 'Halal', status: true },
@@ -67,14 +72,16 @@ const AddProduct: NextPage = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (categoryValue || productValue || modelValue) {
+    if (categoryValue || productValue || modelValue || imageValue) {
       setSubmittedValuesCategory({ category: categoryValue });
       setSubmittedValuesProduct({ product: productValue });
       setSubmittedValuesModel({ model: modelValue });
+      setSubmittedValueImage({ image: imageValue });
 
       setCategoryValue('');
       setProductValue('');
       setModelValue('');
+      setImageValue('');
 
       const halalValue = checkboxes.find(
         (checkbox) => checkbox.title === 'Halal'
@@ -142,7 +149,7 @@ const AddProduct: NextPage = () => {
             models: [
               {
                 name: modelValue,
-                img: '',
+                img: imageValue,
                 alcohol: alcoholValue,
                 allergic: {
                   Gluten: glutenValue,
@@ -207,6 +214,15 @@ const AddProduct: NextPage = () => {
                 className="border"
               />
             )}
+            {input.title === 'Image' && (
+              <input
+                value={imageValue}
+                onChange={(e) => setImageValue(e.target.value)}
+                type={input.type}
+                placeholder={input.placeholder}
+                className="border"
+              />
+            )}
           </div>
         ))}
 
@@ -219,6 +235,7 @@ const AddProduct: NextPage = () => {
       <div>Category: {submittedValuesCategory.category}</div>
       <div>Product: {submittedValuesProduct.product}</div>
       <div>Model: {submittedValuesModel.model}</div>
+      <div>Image:{submittedValueImage.image}</div>
     </div>
   );
 };
