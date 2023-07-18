@@ -3,6 +3,10 @@ import { Category } from './seed.ts';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import Multer from 'multer';
+import { v2 as cloudinary } from 'cloudinary';
+import multer from 'multer';
 
 mongoose.connect('mongodb://localhost:27017/categories');
 
@@ -18,7 +22,20 @@ app.use(
     parameterLimit: 50000,
   })
 );
+app.use(cookieParser());
 app.use(express.json());
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
+const storage: Multer.StorageEngine = multer.memoryStorage();
+const upload = Multer({
+  storage,
+});
 
 app.get('/categories/category', async (req, res) => {
   try {
