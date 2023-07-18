@@ -5,7 +5,6 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import Multer from 'multer';
-import { v2 as cloudinary } from 'cloudinary';
 import multer from 'multer';
 
 mongoose.connect('mongodb://localhost:27017/categories');
@@ -32,6 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
+//boyuk hecimli resimleri endirre bilmek ücündür
 const storage: Multer.StorageEngine = multer.memoryStorage();
 const upload = Multer({
   storage,
