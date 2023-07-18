@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
 import { useState } from 'react';
 import axios from 'axios';
-import AllergicCheckbox from '../components/AllergicCheckbox';
-import CategoryCheckbox from '../components/CategoryCheckbox';
+import AllergicCheckbox from './AllergicCheckbox';
+import CategoryCheckbox from './CategoryCheckbox';
 import Image from 'next/image';
 
 interface CheckboxItem {

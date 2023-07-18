@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NextPage } from 'next';
-import SearchProduct from '../components/SearchProduct';
+import SearchProduct from './SearchProduct';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
