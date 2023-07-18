@@ -66,6 +66,21 @@ const AddProduct: NextPage = () => {
     setCheckboxAllergic(updateAllergic);
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        setImageValue(reader.result as string);
+      };
+
+      reader.readAsDataURL(file);
+    } else {
+      setImageValue('');
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (categoryValue || productValue || imageValue) {
@@ -167,6 +182,7 @@ const AddProduct: NextPage = () => {
         await axios.post('http://localhost:3001/categories/category', {
           category: categoryData,
         });
+        console.log('Product added successfully!');
       } catch (error) {
         console.log(error);
       }
@@ -201,8 +217,7 @@ const AddProduct: NextPage = () => {
             )}
             {input.title === 'Image' && (
               <input
-                value={imageValue}
-                onChange={(e) => setImageValue(e.target.value)}
+                onChange={handleImageChange}
                 type={input.type}
                 placeholder={input.placeholder}
                 className="border w-[30vw] rounded"
@@ -223,15 +238,17 @@ const AddProduct: NextPage = () => {
       </form>
       <div>Category: {submittedValuesCategory.category}</div>
       <div>Product: {submittedValuesProduct.product}</div>
-      <div>
-        Image:
-        <Image
-          src={submittedValueImage.image}
-          alt="image"
-          width={200}
-          height={200}
-        />
-      </div>
+      {submittedValueImage.image && (
+        <div>
+          Image:
+          <Image
+            src={submittedValueImage.image}
+            alt="image"
+            width={200}
+            height={200}
+          />
+        </div>
+      )}
     </div>
   );
 };

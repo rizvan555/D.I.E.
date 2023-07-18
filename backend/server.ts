@@ -2,14 +2,23 @@ import express from 'express';
 import { Category } from './seed.ts';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 
 mongoose.connect('mongodb://localhost:27017/categories');
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(
+  bodyParser.urlencoded({
+    limit: '50mb',
+    extended: true,
+    parameterLimit: 50000,
+  })
+);
+app.use(express.json());
 
 app.get('/categories/category', async (req, res) => {
   try {
