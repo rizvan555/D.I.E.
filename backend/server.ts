@@ -31,7 +31,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//boyuk hecimli resimleri endirre bilmek ücündür
+//boyuk hecimli resimleri endire bilmek ücündür
 const storage: Multer.StorageEngine = multer.memoryStorage();
 const upload = Multer({
   storage,
