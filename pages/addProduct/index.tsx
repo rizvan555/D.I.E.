@@ -70,11 +70,9 @@ const AddProduct: NextPage = () => {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
       const reader = new FileReader();
-
       reader.onloadend = () => {
         setImageValue(reader.result as string);
       };
-
       reader.readAsDataURL(file);
     } else {
       setImageValue('');
@@ -190,7 +188,7 @@ const AddProduct: NextPage = () => {
   };
 
   return (
-    <div className="">
+    <div className="flex items-center">
       <form
         onSubmit={handleSubmit}
         className="flex flex-col gap-5 justify-center items-center m-20"
@@ -225,18 +223,19 @@ const AddProduct: NextPage = () => {
             )}
           </div>
         ))}
-
         <button
           className="border w-[10vw] rounded tracking-wider"
           type="submit"
         >
           SEND
         </button>
-
+      </form>
+      <div className="flex flex-col justify-center items-start">
         <CategoryCheckbox filterCheckboxes={handleFilterCheckboxes} />
         <AllergicCheckbox handleAllergicCheckboxes={handleAllergicCheckboxes} />
-      </form>
-      <div>Category: {submittedValuesCategory.category}</div>
+      </div>
+
+      {/* <div>Category: {submittedValuesCategory.category}</div>
       <div>Product: {submittedValuesProduct.product}</div>
       {submittedValueImage.image && (
         <div>
@@ -248,7 +247,7 @@ const AddProduct: NextPage = () => {
             height={200}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
